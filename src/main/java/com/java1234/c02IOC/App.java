@@ -1,7 +1,6 @@
 package com.java1234.c02IOC;
 
-import com.java1234.c01hello.Hello;
-import com.java1234.c02IOC.entity.People;
+import com.java1234.c02IOC.entity.Hunter;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -13,7 +12,7 @@ public class App {
         //ApplicationContext：IOC容器
         ApplicationContext ac = new ClassPathXmlApplicationContext("c02beans.xml");//加载bean配置文件
 
-        // 属性注入
+      /*  // 属性注入
         People people1 = (People) ac.getBean("people1");
         System.out.println(people1);
 
@@ -33,6 +32,27 @@ public class App {
         System.out.println(people5);
 
         People people6 = (People) ac.getBean("people6");
-        System.out.println(people6);
+        System.out.println(people6);*/
+
+        //注入类型是bean-外部注入
+        Hunter hunter1 = (Hunter) ac.getBean("hunter1");
+        System.out.println(hunter1);
+
+        //注入类型是bean-内部注入
+        Hunter hunter2 = (Hunter) ac.getBean("hunter2");
+        System.out.println(hunter2);
+
+        //注入类型是null
+        Hunter hunter3 = (Hunter) ac.getBean("hunter3");
+        System.out.println(hunter3);
+
+        //级联注入
+        Hunter hunter4 = (Hunter) ac.getBean("hunter4");
+        System.out.println(hunter4);
+
+        //集合和映射注入
+        Hunter hunter5 = (Hunter) ac.getBean("hunter5");
+        System.out.println(hunter5);
+
     }
 }

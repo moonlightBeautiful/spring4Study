@@ -34,4 +34,88 @@
     <bean id="people5" factory-bean="peopleFactory" factory-method="createPeople"></bean>
     <!-- 工厂注入 - 静态方法-->
     <bean id="people6" class="com.java1234.c02IOC.factory.PeopleFactory2" factory-method="createPeople"></bean>
+
+
+    <!-- bean注入 - 外部注入-->
+    <bean id="dog1" class="com.java1234.c02IOC.entity.Dog">
+        <property name="name" value="狗1"></property>
+    </bean>
+
+    <bean id="hunter1" class="com.java1234.c02IOC.entity.Hunter">
+        <property name="id" value="1"></property>
+        <property name="name" value="猎人1"></property>
+        <property name="age" value="11"></property>
+        <property name="dog" ref="dog1"></property>
+    </bean>
+    <!-- bean注入 - 内部注入-->
+    <bean id="hunter2" class="com.java1234.c02IOC.entity.Hunter">
+        <property name="id" value="2"></property>
+        <property name="name" value="猎人2"></property>
+        <property name="age" value="12"></property>
+        <property name="dog">
+            <bean class="com.java1234.c02IOC.entity.Dog">
+                <property name="name" value="狗2"></property>
+            </bean>
+        </property>
+    </bean>
+    <!-- 空值注入 -->
+    <bean id="hunter3" class="com.java1234.c02IOC.entity.Hunter">
+        <property name="id" value="3"></property>
+        <property name="name" value="猎人3"></property>
+        <property name="age" value="13"></property>
+        <property name="dog">
+            <null></null>
+        </property>
+    </bean>
+    <!-- 级联注入 -->
+    <bean id="hunter4" class="com.java1234.c02IOC.entity.Hunter">
+        <property name="id" value="4"></property>
+        <property name="name" value="猎人4"></property>
+        <property name="age" value="14"></property>
+        <property name="dog.name" value="狗4"></property>
+    </bean>
+    <!-- 集合和映射注入 -->
+    <bean id="dog5" class="com.java1234.c02IOC.entity.Dog">
+        <property name="name" value="狗5"></property>
+    </bean>
+    <bean id="hunter5" class="com.java1234.c02IOC.entity.Hunter">
+        <property name="id" value="5"></property>
+        <property name="name" value="猎人5"></property>
+        <property name="age" value="15"></property>
+        <property name="dog" ref="dog5"></property>
+        <property name="hobbies">
+            <list>
+                <value>唱歌</value>
+                <value>跳舞</value>
+            </list>
+        </property>
+        <property name="loves">
+            <set>
+                <value>唱歌2</value>
+                <value>跳舞2</value>
+            </set>
+        </property>
+        <property name="works">
+            <map>
+                <entry>
+                    <key>
+                        <value>上午</value>
+                    </key>
+                    <value>写代码</value>
+                </entry>
+                <entry>
+                    <key>
+                        <value>下午</value>
+                    </key>
+                    <value>测试代码</value>
+                </entry>
+            </map>
+        </property>
+        <property name="addresses">
+            <props>
+                <prop key="address1">aaaaa</prop>
+                <prop key="address2">bbbbb</prop>
+            </props>
+        </property>
+    </bean>
 </beans>
