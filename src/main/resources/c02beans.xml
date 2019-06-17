@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
-
+    <!-- 注入方式 -->
     <!-- 属性注入-->
     <bean id="people1" class="com.java1234.c02IOC.entity.People">
         <property name="id" value="1"></property>
@@ -36,6 +36,7 @@
     <bean id="people6" class="com.java1234.c02IOC.factory.PeopleFactory2" factory-method="createPeople"></bean>
 
 
+    <!-- 注入类型 -->
     <!-- bean注入 - 外部注入-->
     <bean id="dog1" class="com.java1234.c02IOC.entity.Dog">
         <property name="name" value="狗1"></property>
@@ -118,4 +119,6 @@
             </props>
         </property>
     </bean>
+    <!-- beans的依赖关系 -->
+    <!-- bean的scope -->
 </beans>
