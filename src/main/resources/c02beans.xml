@@ -120,5 +120,37 @@
         </property>
     </bean>
     <!-- beans的依赖关系 -->
+    <!-- 继承 -->
+    <bean id="abstractPeople" class="com.java1234.c02IOC.entity.Student" abstract="true">
+        <property name="className" value="高三5班"></property>
+        <property name="age" value="19"></property>
+    </bean>
+
+    <bean id="zhangsan" parent="abstractPeople">
+        <property name="id" value="1"></property>
+        <property name="name" value="张三"></property>
+    </bean>
+
+    <bean id="lisi" parent="abstractPeople">
+        <property name="id" value="2"></property>
+        <property name="name" value="李四"></property>
+        <property name="age" value="20"></property>
+    </bean>
+    <!-- 依赖 -->
+    <bean id="autority" class="com.java1234.c02IOC.service.Authority"></bean>
+    <bean id="wangwu" parent="abstractPeople">
+        <property name="id" value="2"></property>
+        <property name="name" value="王五"></property>
+        <property name="age" value="20"></property>
+    </bean>
+    <!-- 引用 -->
     <!-- bean的scope -->
+    <!-- 单例，默认 -->
+    <bean id="myDog1" class="com.java1234.c02IOC.entity.Dog" scope="singleton">
+        <property name="name" value="jack"></property>
+    </bean>
+    <!-- 多例 -->
+    <bean id="myDog2" class="com.java1234.c02IOC.entity.Dog" scope="prototype">
+        <property name="name" value="jack"></property>
+    </bean>
 </beans>

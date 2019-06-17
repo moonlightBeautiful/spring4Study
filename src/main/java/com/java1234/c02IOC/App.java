@@ -1,6 +1,6 @@
 package com.java1234.c02IOC;
 
-import com.java1234.c02IOC.entity.Hunter;
+import com.java1234.c02IOC.entity.Dog;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -34,7 +34,7 @@ public class App {
         People people6 = (People) ac.getBean("people6");
         System.out.println(people6);*/
 
-        //注入类型是bean-外部注入
+      /*  //注入类型是bean-外部注入
         Hunter hunter1 = (Hunter) ac.getBean("hunter1");
         System.out.println(hunter1);
 
@@ -52,7 +52,28 @@ public class App {
 
         //集合和映射注入
         Hunter hunter5 = (Hunter) ac.getBean("hunter5");
-        System.out.println(hunter5);
+        System.out.println(hunter5);*/
 
+        /*//继承
+        Student zhangsan = (Student) ac.getBean("zhangsan");
+        System.out.println(zhangsan);
+
+        Student lisi = (Student) ac.getBean("lisi");
+        System.out.println(lisi);*/
+
+       /* //依赖
+        Student wangwu = (Student) ac.getBean("wangwu");
+        System.out.println(wangwu);
+
+        //引用 不在测试*/
+
+        //范围 单例
+        Dog myDog1 = (Dog) ac.getBean("myDog1");
+        Dog myDog2 = (Dog) ac.getBean("myDog1");
+        System.out.println(myDog1 == myDog2);
+        //范围 多例
+        Dog myDog3 = (Dog) ac.getBean("myDog2");
+        Dog myDog4 = (Dog) ac.getBean("myDog2");
+        System.out.println(myDog3 == myDog4);
     }
 }
