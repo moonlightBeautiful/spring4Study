@@ -1,8 +1,10 @@
 package com.java1234.c04jdbc;
 
 
-import com.java1234.c04jdbc.model.Student;
-import com.java1234.c04jdbc.service.StudentService;
+import com.java1234.c04jdbc.model.President;
+import com.java1234.c04jdbc.model.Teacher;
+import com.java1234.c04jdbc.service.PresidentService;
+import com.java1234.c04jdbc.service.TeacherService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -16,5 +18,12 @@ public class App {
         /*//jdbctemplate作为dao类的属性使用
         StudentService studentService = (StudentService) ac.getBean("studentService");
         studentService.addStudent(new Student("离开", 1));*/
+
+        /*TeacherService teacherService = (TeacherService) ac.getBean("teacherService");
+        teacherService.addTeacher(new Teacher("李四", 1));*/
+
+        PresidentService presidentService = (PresidentService) ac.getBean("presidentService");
+        presidentService.addPresident(new President("李四", 1));
+
     }
 }
