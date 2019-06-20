@@ -43,7 +43,7 @@ public class BankServiceImpl implements BankService {
     }
 */
     @Override
-    @Transactional
+   /* @Transactional*/
     public void transferAccounts(int count, int userIdA, int userIdB) {
         // TODO Auto-generated method stub
         bankDao.outMoney(count, userIdA);
