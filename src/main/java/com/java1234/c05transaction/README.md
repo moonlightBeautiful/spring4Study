@@ -29,5 +29,12 @@
             2.2注解式
                 在xml中启动事务驱动就可以
                 <tx:annotation-driven transaction-manager="myTransactionManager"/>
-                
+    事务的传播行为Propagation：至少两个事务嵌套才可以发生事务传播行为
+        1、REQUIRED：最常用，方法A和方法B都有事务。
+            当方法A和方法B单独运行时，各自用各自的事务。
+            当方法A包含方法B，方法A运行时，使用方法A的事务。
+    2.在mysql下测试，发现支持readOnly，设置为true时，只能查询，若增删改会异常：
+    3.在oracle下测试，发现不支持readOnly，也就是不论Connection里的readOnly属性是true还是false均不影响SQL的增删改查；
+            
+                 
         
