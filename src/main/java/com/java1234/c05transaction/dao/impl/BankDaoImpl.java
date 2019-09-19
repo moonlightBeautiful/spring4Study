@@ -7,23 +7,23 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 public class BankDaoImpl implements BankDao {
 
-    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+    private NamedParameterJdbcTemplate myNamedParameterJdbcTemplate;
 
 
-    public void setNamedParameterJdbcTemplate(
+    public void setMyNamedParameterJdbcTemplate(
             NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
-        this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
+        this.myNamedParameterJdbcTemplate = namedParameterJdbcTemplate;
     }
 
     @Override
     public void inMoney(int money, int userId) {
         // TODO Auto-generated method stub
         //故意写错表，转账不进来
-        String sql = "update t_count2 set count=count+:money where userId=:userId";
+        String sql = "update t_count set count=count+:money where userId=:userId";
         MapSqlParameterSource sps = new MapSqlParameterSource();
         sps.addValue("money", money);
         sps.addValue("userId", userId);
-        namedParameterJdbcTemplate.update(sql, sps);
+        myNamedParameterJdbcTemplate.update(sql, sps);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class BankDaoImpl implements BankDao {
         MapSqlParameterSource sps = new MapSqlParameterSource();
         sps.addValue("money", money);
         sps.addValue("userId", userId);
-        namedParameterJdbcTemplate.update(sql, sps);
+        myNamedParameterJdbcTemplate.update(sql, sps);
     }
 
 }
