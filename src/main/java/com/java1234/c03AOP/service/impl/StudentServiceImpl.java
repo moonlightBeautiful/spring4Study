@@ -7,9 +7,8 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void addStudent(String name) {
-        // System.out.println("��ʼ���ѧ��"+name);
+        // System.out.println("不使用切面，手动做日志，添加学生名字："+name);
         System.out.println("添加学生：" + name);
-        // System.out.println("���ѧ��"+name+"�����");
     }
 
 }

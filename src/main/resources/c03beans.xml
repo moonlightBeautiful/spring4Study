@@ -2,23 +2,34 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/aop
-        http://www.springframework.org/schema/aop/spring-aop.xsd">
-
-    <bean id="studentServiceAspect" class="com.java1234.c03AOP.advice.StudentServiceAspect"></bean>
+        http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- 1.编程式AOP，需要启动注解 -->
+    <!-- 注解扫描 -->
+    <context:component-scan base-package="com.java1234.c03AOP.advice"/>
+    <!-- 启动aop的注解解析器 -->
+    <aop:aspectj-autoproxy/>
 
     <bean id="studentService" class="com.java1234.c03AOP.service.impl.StudentServiceImpl"></bean>
 
+    <!-- 1.xml式AOP -->
+    <!-- 切面 -->
+    <!--<bean id="studentServiceAspect" class="com.java1234.c03AOP.advice.StudentServiceAspect"></bean>
     <aop:config>
+        &lt;!&ndash;要切入的对象&ndash;&gt;
+        <aop:pointcut expression="execution(* com.java1234.c03AOP.service.*.*(..))" id="studentServicePointcut"/>
+        &lt;!&ndash; 通知与切点 &ndash;&gt;
         <aop:aspect id="studentServiceAspect" ref="studentServiceAspect">
-            <aop:pointcut expression="execution(* com.java1234.c03AOP.service.*.*(..))" id="studentServicePointcut"/>
             <aop:before method="doBefore" pointcut-ref="studentServicePointcut"/>
             <aop:after method="doAfter" pointcut-ref="studentServicePointcut"/>
             <aop:around method="doAround" pointcut-ref="studentServicePointcut"/>
             <aop:after-returning method="doAfterReturning" pointcut-ref="studentServicePointcut"/>
             <aop:after-throwing method="doAfterThrowing" pointcut-ref="studentServicePointcut" throwing="ex"/>
         </aop:aspect>
-    </aop:config>
+    </aop:config>-->
+
+
 </beans>
