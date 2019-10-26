@@ -10,7 +10,13 @@ public class App {
     public static void main(String[] args) {
         //ApplicationContext：IOC容器
         ApplicationContext ac = new ClassPathXmlApplicationContext("c01beans.xml");//加载bean配置文件
-        Hello helloWorld = (Hello) ac.getBean("helloWorld");//从bean配置文件获取helloWorld实例
+        //配置文件实例化Hello
+        Hello hello = (Hello) ac.getBean("hello");
+        hello.say();
+
+        //注解实例化Hello
+        HelloWorld helloWorld = (HelloWorld) ac.getBean("helloWorld");
         helloWorld.say();
+
     }
 }
