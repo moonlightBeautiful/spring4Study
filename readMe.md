@@ -28,9 +28,17 @@
             request：每次http请求产生一个新bean
             session：同一个http session 共享一个bean
             global session：同一个全局http session 共享一个bean
-            application：同一个application 共享一个bean
-            
+            application：同一个application 共享一个bean  
         5.bean之间的关系
             继承：如果有一个bean的属性，大多数bean都要用到相同的属性，可以抽象这个bean，然后继承这个bean。
             引用：一直在用，就不说了。
             依赖：依赖的bean先实例化，在实例化自己。
+    3.aop
+        面向切面编程。主要用于：日志记录、安全管理、事务管理
+            连接点：程序运行的运行中，一个一个独立的方法是连接点，连接起来就是程序的运行。
+            通知：插入切点后执行的动作。什么和何时。
+            切点：连接点的前中后的位置为切点。何处。
+            切面：通知和切点的集合
+        手动做日志记录：要在每个方法前后手写日志，麻烦。
+        AOP做日志：方便
+        
