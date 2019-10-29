@@ -12,7 +12,8 @@ public class StudentServiceAspect {
     public void doBefore(JoinPoint jp) {
         System.out.println("类名:" + jp.getTarget().getClass().getName());
         System.out.println("方法名：" + jp.getSignature().getName());
-        System.out.println("开始添加学生：" + jp.getArgs()[0]);
+        System.out.println("参数：" + jp.getArgs()[0]);
+        System.out.println("前置通知：===============");
     }
     /**
      * 切点执行之后的动作
@@ -21,7 +22,8 @@ public class StudentServiceAspect {
     public void doAfter(JoinPoint jp) {
         System.out.println("类名:" + jp.getTarget().getClass().getName());
         System.out.println("方法名：" + jp.getSignature().getName());
-        System.out.println("学生添加完成：" + jp.getArgs()[0]);
+        System.out.println("参数：" + jp.getArgs()[0]);
+        System.out.println("后置通知：===============");
     }
 
     /**
@@ -31,10 +33,9 @@ public class StudentServiceAspect {
      * @throws Throwable
      */
     public Object doAround(ProceedingJoinPoint pjp) throws Throwable {
-        System.out.println("添加学生前");
+        System.out.println("环绕通知前");
         Object retVal = pjp.proceed();
-        System.out.println(retVal);
-        System.out.println("添加学生后");
+        System.out.println("环绕通知后");
         return retVal;
     }
 

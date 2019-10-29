@@ -15,13 +15,13 @@
 
     <bean id="studentService" class="com.java1234.c03AOP.service.impl.StudentServiceImpl"></bean>
 
-    <!-- 1.xml式AOP -->
+    <!-- 2.xml式AOP -->
     <!-- 切面 -->
-    <!--<bean id="studentServiceAspect" class="com.java1234.c03AOP.advice.StudentServiceAspect"></bean>
+    <bean id="studentServiceAspect" class="com.java1234.c03AOP.advice.StudentServiceAspect"></bean>
     <aop:config>
-        &lt;!&ndash;要切入的对象&ndash;&gt;
+        <!--切点-->
         <aop:pointcut expression="execution(* com.java1234.c03AOP.service.*.*(..))" id="studentServicePointcut"/>
-        &lt;!&ndash; 通知与切点 &ndash;&gt;
+        <!-- 通知 -->
         <aop:aspect id="studentServiceAspect" ref="studentServiceAspect">
             <aop:before method="doBefore" pointcut-ref="studentServicePointcut"/>
             <aop:after method="doAfter" pointcut-ref="studentServicePointcut"/>
@@ -29,7 +29,7 @@
             <aop:after-returning method="doAfterReturning" pointcut-ref="studentServicePointcut"/>
             <aop:after-throwing method="doAfterThrowing" pointcut-ref="studentServicePointcut" throwing="ex"/>
         </aop:aspect>
-    </aop:config>-->
+    </aop:config>
 
 
 </beans>
