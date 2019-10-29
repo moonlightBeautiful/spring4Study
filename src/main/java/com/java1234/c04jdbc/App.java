@@ -2,9 +2,7 @@ package com.java1234.c04jdbc;
 
 
 import com.java1234.c04jdbc.model.President;
-import com.java1234.c04jdbc.model.Teacher;
 import com.java1234.c04jdbc.service.PresidentService;
-import com.java1234.c04jdbc.service.TeacherService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -14,7 +12,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class App {
     public static void main(String[] args) {
 
-        ApplicationContext ac = new ClassPathXmlApplicationContext("c04beans.xml");//加载bean配置文件
+        ApplicationContext ac = new ClassPathXmlApplicationContext("c04JDBC/c04beans.xml");//加载bean配置文件
         /*//jdbctemplate作为dao类的属性使用
         StudentService studentService = (StudentService) ac.getBean("studentService");
         studentService.addStudent(new Student("离开", 1));*/

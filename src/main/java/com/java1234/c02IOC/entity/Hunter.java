@@ -7,7 +7,8 @@ public class Hunter {
     private int id;
     private String name;
     private int age;
-    private Dog dog = new Dog();
+    private Dog dog;
+    //private Dog dog = new Dog();  //级联属性注入，需要实例化
     private List<String> hobbies = new ArrayList<String>();
     private Set<String> loves = new HashSet<String>();
     private Map<String, String> works = new HashMap<String, String>();

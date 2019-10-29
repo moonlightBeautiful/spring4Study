@@ -3,7 +3,7 @@ package com.java1234.c02IOC.factory;
 
 import com.java1234.c02IOC.entity.People;
 
-public class PeopleFactory {
+public class PeopleFactory1 {
 
     public People createPeople() {
         People p = new People();

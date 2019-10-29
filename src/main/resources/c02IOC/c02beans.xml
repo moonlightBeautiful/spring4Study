@@ -3,7 +3,11 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <!-- 注入方式 -->
+    <!--default-autowire="byName"-->
+    <!-- 注入方式3种：属性注入、构造方法注入、工厂注入 -->
+    <!-- 无注入-->
+    <bean id="people" class="com.java1234.c02IOC.entity.People">
+    </bean>
     <!-- 属性注入-->
     <bean id="people1" class="com.java1234.c02IOC.entity.People">
         <property name="id" value="1"></property>
@@ -22,26 +26,24 @@
         <constructor-arg index="1" value="小3"></constructor-arg>
         <constructor-arg index="2" value="13"></constructor-arg>
     </bean>
-    <!-- 构造方法注入 - type和index-->
+    <!-- 构造方法注入 - type和index组合-->
     <bean id="people4" class="com.java1234.c02IOC.entity.People">
         <constructor-arg index="0" type="int" value="4"></constructor-arg>
         <constructor-arg index="1" type="String" value="小4"></constructor-arg>
         <constructor-arg index="2" type="int" value="14"></constructor-arg>
     </bean>
     <!-- 工厂注入 - 非静态方法-->
-    <bean id="peopleFactory" class="com.java1234.c02IOC.factory.PeopleFactory"></bean>
-
+    <bean id="peopleFactory" class="com.java1234.c02IOC.factory.PeopleFactory1"></bean>
     <bean id="people5" factory-bean="peopleFactory" factory-method="createPeople"></bean>
     <!-- 工厂注入 - 静态方法-->
     <bean id="people6" class="com.java1234.c02IOC.factory.PeopleFactory2" factory-method="createPeople"></bean>
 
 
-    <!-- 注入类型 -->
+    <!-- 注入类型6种：基本数据类型注入、bean类型注入、null类型注入、级联注入、集合类型注入、Map类型注入 -->
     <!-- bean注入 - 外部注入-->
     <bean id="dog1" class="com.java1234.c02IOC.entity.Dog">
         <property name="name" value="狗1"></property>
     </bean>
-
     <bean id="hunter1" class="com.java1234.c02IOC.entity.Hunter">
         <property name="id" value="1"></property>
         <property name="name" value="猎人1"></property>
@@ -69,13 +71,13 @@
         </property>
     </bean>
     <!-- 级联注入 -->
-    <bean id="hunter4" class="com.java1234.c02IOC.entity.Hunter">
-        <property name="id" value="4"></property>
-        <property name="name" value="猎人4"></property>
-        <property name="age" value="14"></property>
-        <property name="dog.name" value="狗4"></property>
-    </bean>
-    <!-- 集合和映射注入 -->
+    <!-- <bean id="hunter4" class="com.java1234.c02IOC.entity.Hunter">
+         <property name="id" value="4"></property>
+         <property name="name" value="猎人4"></property>
+         <property name="age" value="14"></property>
+         <property name="dog.name" value="狗4"></property>
+     </bean>-->
+    <!-- 集合和映射和property注入 -->
     <bean id="dog5" class="com.java1234.c02IOC.entity.Dog">
         <property name="name" value="狗5"></property>
     </bean>
@@ -119,23 +121,57 @@
             </props>
         </property>
     </bean>
-    <!-- beans的依赖关系 -->
+
+
+    <!-- 自动匹配装配bean（头部default-autowire属性）3种：根据名字、根据类型、根据构造方法 -->
+    <!-- 不建议使用，很容易出错 -->
+    <!-- 根据名字，不再演示，头部default-autowire属性=byName，bean的id和属性名相同，则自动匹配 -->
+    <!-- 根据类型，不再演示，头部default-autowire属性=byName，bean的id和属性类型相同，则自动匹配 -->
+    <!-- 根据名字，不再演示，头部default-autowire属性=byName，bean的id和属性名相同，则自动匹配 -->
+
+
+    <!-- bean的作用域scope -->
+    <!-- 单例，默认singleton -->
+    <bean id="myDog1" class="com.java1234.c02IOC.entity.Dog" scope="singleton">
+        <property name="name" value="jack"></property>
+    </bean>
+    <!-- 多例，prototype-->
+    <bean id="myDog2" class="com.java1234.c02IOC.entity.Dog" scope="prototype">
+        <property name="name" value="jack"></property>
+    </bean>
+    <!-- bean配置成单例，属性bean配置成多例。获取bean后，属性bean是单例-->
+    <bean id="hunter6" class="com.java1234.c02IOC.entity.Hunter" scope="singleton">
+        <property name="id" value="3"></property>
+        <property name="name" value="猎人3"></property>
+        <property name="age" value="13"></property>
+        <property name="dog" ref="myDog2"></property>
+    </bean>
+    <!-- bean配置成单例，属性bean配置成多例。获取bean后，属性bean是单例，可以更改成多例-->
+    <!--1.bean改成抽象 2.属性bean的getter方法改成抽象的 3.如下配置-->
+    <!--<bean id="hunter7" class="com.java1234.c02IOC.entity.Hunter" scope="singleton">
+        <property name="id" value="3"></property>
+        <property name="name" value="猎人3"></property>
+        <property name="age" value="13"></property>
+        <lookup-method name="getDog"></lookup-method>
+    </bean>-->
+
+
+    <!-- beans的依赖关系3种：继承、引用、依赖 -->
     <!-- 继承 -->
     <bean id="abstractPeople" class="com.java1234.c02IOC.entity.Student" abstract="true">
         <property name="className" value="高三5班"></property>
         <property name="age" value="19"></property>
     </bean>
-
     <bean id="zhangsan" parent="abstractPeople">
         <property name="id" value="1"></property>
         <property name="name" value="张三"></property>
     </bean>
-
     <bean id="lisi" parent="abstractPeople">
         <property name="id" value="2"></property>
         <property name="name" value="李四"></property>
         <property name="age" value="20"></property>
     </bean>
+    <!-- 引用：这里就不说了，一直在用 -->
     <!-- 依赖 -->
     <bean id="autority" class="com.java1234.c02IOC.service.Authority"></bean>
     <bean id="wangwu" parent="abstractPeople">
@@ -143,14 +179,5 @@
         <property name="name" value="王五"></property>
         <property name="age" value="20"></property>
     </bean>
-    <!-- 引用 -->
-    <!-- bean的scope -->
-    <!-- 单例，默认 -->
-    <bean id="myDog1" class="com.java1234.c02IOC.entity.Dog" scope="singleton">
-        <property name="name" value="jack"></property>
-    </bean>
-    <!-- 多例 -->
-    <bean id="myDog2" class="com.java1234.c02IOC.entity.Dog" scope="prototype">
-        <property name="name" value="jack"></property>
-    </bean>
+
 </beans>

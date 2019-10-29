@@ -9,7 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class App {
     public static void main(String[] args) {
         //ApplicationContext：IOC容器
-        ApplicationContext ac = new ClassPathXmlApplicationContext("c01beans.xml");//加载bean配置文件
+        ApplicationContext ac = new ClassPathXmlApplicationContext("c01hello/c01beans.xml");//加载bean配置文件
         //配置文件实例化Hello
         Hello hello = (Hello) ac.getBean("hello");
         hello.say();
