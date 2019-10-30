@@ -1,9 +1,9 @@
-package com.java1234.c04jdbc.service.impl;
+package com.java1234.C04DAO.c01JDBC.service.impl;
 
 
-import com.java1234.c04jdbc.dao.TeacherDao;
-import com.java1234.c04jdbc.model.Teacher;
-import com.java1234.c04jdbc.service.TeacherService;
+import com.java1234.C04DAO.c01JDBC.dao.TeacherDao;
+import com.java1234.C04DAO.c01JDBC.model.Teacher;
+import com.java1234.C04DAO.c01JDBC.service.TeacherService;
 
 import java.util.List;
 

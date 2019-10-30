@@ -1,7 +1,7 @@
-package com.java1234.c04jdbc.dao.impl;
+package com.java1234.C04DAO.c01JDBC.dao.impl;
 
-import com.java1234.c04jdbc.dao.TeacherDao;
-import com.java1234.c04jdbc.model.Teacher;
+import com.java1234.C04DAO.c01JDBC.dao.TeacherDao;
+import com.java1234.C04DAO.c01JDBC.model.Teacher;
 import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 

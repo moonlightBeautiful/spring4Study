@@ -1,30 +1,30 @@
-package com.java1234.c04jdbc.model;
+package com.java1234.C04DAO.c01JDBC.model;
 
 /**
  * @author gaoxu
  * @date 2019-06-18 11:29
  * @description ... 类
  */
-public class Student {
+public class Teacher {
     private int id;
     private String name;
     private int age;
 
 
-    public Student() {
+    public Teacher() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 
-    public Student(String name, int age) {
+    public Teacher(String name, int age) {
         super();
         this.name = name;
         this.age = age;
     }
 
 
-    public Student(int id, String name, int age) {
+    public Teacher(int id, String name, int age) {
         super();
         this.id = id;
         this.name = name;

@@ -1,4 +1,4 @@
-package com.java1234.c04jdbc.model;
+package com.java1234.C04DAO.c01JDBC.model;
 
 /**
  * @author gaoxu

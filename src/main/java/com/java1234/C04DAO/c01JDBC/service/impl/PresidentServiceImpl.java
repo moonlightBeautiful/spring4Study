@@ -1,9 +1,9 @@
-package com.java1234.c04jdbc.service.impl;
+package com.java1234.C04DAO.c01JDBC.service.impl;
 
 
-import com.java1234.c04jdbc.dao.PresidentDao;
-import com.java1234.c04jdbc.model.President;
-import com.java1234.c04jdbc.service.PresidentService;
+import com.java1234.C04DAO.c01JDBC.dao.PresidentDao;
+import com.java1234.C04DAO.c01JDBC.model.President;
+import com.java1234.C04DAO.c01JDBC.service.PresidentService;
 
 import java.util.List;
 

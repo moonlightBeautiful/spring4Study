@@ -1,6 +1,6 @@
-package com.java1234.c04jdbc.dao;
+package com.java1234.C04DAO.c01JDBC.dao;
 
-import com.java1234.c04jdbc.model.Student;
+import com.java1234.C04DAO.c01JDBC.model.Student;
 
 import java.util.List;
 

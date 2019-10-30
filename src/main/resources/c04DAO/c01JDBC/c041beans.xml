@@ -3,13 +3,11 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
-
-
     	http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:property-placeholder location="../jdbc.properties"/>
-
+    <!-- Spring容器只能有一个PropertyPlaceholderConfigurer，如果有多个属性文件，这时就看谁先谁后了，先的保留 ，后的忽略 -->
+    <context:property-placeholder location="./c04DAO/jdbc.properties"/>
     <bean id="dataSource"
           class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${jdbc.driverClassName}"/>
@@ -23,20 +21,20 @@
         <property name="dataSource" ref="dataSource"></property>
     </bean>
 
-    <bean id="studentDao" class="com.java1234.c04jdbc.dao.impl.StudentDaoImpl">
+    <bean id="studentDao" class="com.java1234.C04DAO.c01JDBC.dao.impl.StudentDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate"></property>
     </bean>
 
-    <bean id="studentService" class="com.java1234.c04jdbc.service.impl.StudentServiceImpl">
+    <bean id="studentService" class="com.java1234.C04DAO.c01JDBC.service.impl.StudentServiceImpl">
         <property name="studentDao" ref="studentDao"></property>
     </bean>
 
     <!--jdbcSupport作为dao的父类 -->
-    <bean id="teacherDao" class="com.java1234.c04jdbc.dao.impl.TeacherDaoImpl">
+    <bean id="teacherDao" class="com.java1234.C04DAO.c01JDBC.dao.impl.TeacherDaoImpl">
         <property name="dataSource" ref="dataSource"></property>
     </bean>
 
-    <bean id="teacherService" class="com.java1234.c04jdbc.service.impl.TeacherServiceImpl">
+    <bean id="teacherService" class="com.java1234.C04DAO.c01JDBC.service.impl.TeacherServiceImpl">
         <property name="teacherDao" ref="teacherDao"></property>
     </bean>
 
@@ -44,11 +42,11 @@
     <bean id="namedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
         <constructor-arg ref="dataSource"></constructor-arg>
     </bean>
-    <bean id="presidentDao" class="com.java1234.c04jdbc.dao.impl.PresidentDaoImpl">
+    <bean id="presidentDao" class="com.java1234.C04DAO.c01JDBC.dao.impl.PresidentDaoImpl">
         <property name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"></property>
     </bean>
 
-    <bean id="presidentService" class="com.java1234.c04jdbc.service.impl.PresidentServiceImpl">
+    <bean id="presidentService" class="com.java1234.C04DAO.c01JDBC.service.impl.PresidentServiceImpl">
         <property name="presidentDao" ref="presidentDao"></property>
     </bean>
 </beans>

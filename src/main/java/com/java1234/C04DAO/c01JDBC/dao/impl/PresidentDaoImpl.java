@@ -1,7 +1,7 @@
-package com.java1234.c04jdbc.dao.impl;
+package com.java1234.C04DAO.c01JDBC.dao.impl;
 
-import com.java1234.c04jdbc.dao.PresidentDao;
-import com.java1234.c04jdbc.model.President;
+import com.java1234.C04DAO.c01JDBC.dao.PresidentDao;
+import com.java1234.C04DAO.c01JDBC.model.President;
 import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
