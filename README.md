@@ -1,18 +1,16 @@
 #Study
-    1.hello
-        简介：
-            由Rod Johnson创建的轻量级的JAVA开源框架，解决企业级应用开发的复杂性，代替EJB，	     
-        2个核心思想：
-            IOC（控制反转）和AOP（面向切面）。
-        下载地址
-            http://repo.springsource.org/libs-release-local/org/springframework/spring/
-        实例化bean：
-            1.xml中
-            2.注解，使用注解的话，要开始组件扫描
-                @Component  entity
-                @Service：业务层
-                @Controller：WEB层
-                @Repository：持久层
-              虽然分了层，但目前这四个注解的功能是一样的。实例化的默认值值是类名的开头小写
-    2.ioc
+   
+    3.AOP
+        面向切面编程。主要用于：日志记录、安全管理、事务管理
+            连接点：程序运行的运行中，一个一个独立的方法是连接点，连接起来就是程序的运行。
+            通知：插入切点后执行的动作。什么和何时。
+            切点：连接点的前中后的位置为切点。何处。
+            切面：通知和切点的集合
+        手动做日志记录：要在每个方法前后手写日志，麻烦。
+        AOP做日志：方便
+    4.DAO
+        1.对jdbc的支持：JdbcTemplate（作为属性）、JdbcSupport(作为父类)、NamedParameterJdbcTemplate（作为属性）
+            xml中定义数据源dataSource
+        2. 
+            
         

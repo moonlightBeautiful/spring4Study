@@ -6,7 +6,12 @@
 
     <groupId>com.java1234</groupId>
     <artifactId>spring4Study</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>c01hello</module>
+        <module>c02IOC</module>
+    </modules>
 
     <name>spring4Study</name>
     <!-- FIXME change it to the project's website -->

@@ -16,7 +16,7 @@ AOP（Aspect Oriented Programming）面向切面编程的学习
         1.xml式   
             <bean id="studentServiceAspect" class="com.java1234.c03AOP.advice.StudentServiceAspect"></bean>
             <aop:config>
-                <aop:pointcut expression="execution(* com.java1234.c03AOP.service.*.*(..))" id="studentServicePointcut"/>
+                <aop:pointcut expression="execution(* com.java1234.c03AOP.com.java1234.service.*.*(..))" id="studentServicePointcut"/>
                 <aop:aspect id="studentServiceAspect" ref="studentServiceAspect">
                     <aop:before method="doBefore" pointcut-ref="studentServicePointcut"/>
                     <aop:after method="doAfter" pointcut-ref="studentServicePointcut"/>
@@ -29,7 +29,7 @@ AOP（Aspect Oriented Programming）面向切面编程的学习
             在切面类中使用
                 @Aspect
                 @Component
-                @Pointcut("execution(* com.java1234.c03AOP.service.*.*(..))")
+                @Pointcut("execution(* com.java1234.c03AOP.com.java1234.service.*.*(..))")
                 @Before("pointcutName()")
             xml开启注解功能
                 <!-- 注解扫描 -->

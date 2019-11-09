@@ -1,7 +1,7 @@
-package com.java1234.c02IOC.factory;
+package com.java1234.factory;
 
 
-import com.java1234.c02IOC.entity.People;
+import com.java1234.entity.People;
 
 public class PeopleFactory2 {
 

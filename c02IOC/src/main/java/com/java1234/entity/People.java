@@ -1,4 +1,4 @@
-package com.java1234.c02IOC.entity;
+package com.java1234.entity;
 
 public class People {
 

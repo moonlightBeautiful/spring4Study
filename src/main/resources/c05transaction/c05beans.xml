@@ -33,7 +33,7 @@
     <bean id="bankDao" class="com.java1234.c05transaction.dao.impl.BankDaoImpl">
         <property name="myNamedParameterJdbcTemplate" ref="myNamedParameterJdbcTemplate"></property>
     </bean>
-    <bean id="bankService" class="com.java1234.c05transaction.service.impl.BankServiceImpl">
+    <bean id="bankService" class="com.java1234.c05transaction.com.java1234.service.impl.BankServiceImpl">
         <property name="bankDao" ref="bankDao"></property>
     </bean>
 
@@ -42,7 +42,7 @@
     <!--    <bean id="myTransactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
            <property name="transactionManager" ref="myTransactionManager"></property>
        </bean>
-       <bean id="bankService" class="com.java1234.c05transaction.service.impl.BankServiceImpl">
+       <bean id="bankService" class="com.java1234.c05transaction.com.java1234.service.impl.BankServiceImpl">
            <property name="bankDao" ref="bankDao"></property>
            <property name="myTransactionTemplate" ref="myTransactionTemplate"></property>
        </bean>-->
@@ -52,7 +52,7 @@
     <tx:advice id="txAdvice" transaction-manager="myTransactionManager"/>
     <aop:config>
         <!-- 配置切点 -->
-        <aop:pointcut id="serviceMethod" expression="execution(* com.java1234.c05transaction.service.*.*(..))"/>
+        <aop:pointcut id="serviceMethod" expression="execution(* com.java1234.c05transaction.com.java1234.service.*.*(..))"/>
         <!-- 通知和切点结合 -->
         <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethod"/>
     </aop:config>

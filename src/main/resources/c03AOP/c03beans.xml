@@ -13,14 +13,14 @@
     <!-- 启动aop的注解解析器 -->
     <aop:aspectj-autoproxy/>
 
-    <bean id="studentService" class="com.java1234.c03AOP.service.impl.StudentServiceImpl"></bean>
+    <bean id="studentService" class="com.java1234.c03AOP.com.java1234.service.impl.StudentServiceImpl"></bean>
 
     <!-- 2.xml式AOP -->
     <!-- 切面 -->
     <bean id="studentServiceAspect" class="com.java1234.c03AOP.advice.StudentServiceAspect"></bean>
     <aop:config>
         <!--切点-->
-        <aop:pointcut expression="execution(* com.java1234.c03AOP.service.*.*(..))" id="studentServicePointcut"/>
+        <aop:pointcut expression="execution(* com.java1234.c03AOP.com.java1234.service.*.*(..))" id="studentServicePointcut"/>
         <!-- 通知 -->
         <aop:aspect id="studentServiceAspect" ref="studentServiceAspect">
             <aop:before method="doBefore" pointcut-ref="studentServicePointcut"/>

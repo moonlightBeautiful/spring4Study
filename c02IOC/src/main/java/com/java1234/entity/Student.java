@@ -1,4 +1,4 @@
-package com.java1234.c02IOC.entity;
+package com.java1234.entity;
 
 /**
  * @author gaoxu
@@ -14,6 +14,13 @@ public class Student {
 
     public Student() {
         System.out.println("初始化Student");
+    }
+
+    public Student(int id, String name, int age, String className) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.className = className;
     }
 
     public int getId() {
