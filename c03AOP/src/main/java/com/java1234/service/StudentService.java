@@ -1,4 +1,4 @@
-package com.java1234.c03AOP.service;
+package com.java1234.service;
 
 public interface StudentService {
 

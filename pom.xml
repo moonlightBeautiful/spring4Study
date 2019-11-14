@@ -11,6 +11,7 @@
     <modules>
         <module>c01hello</module>
         <module>c02IOC</module>
+        <module>c03AOP</module>
     </modules>
 
     <name>spring4Study</name>

@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class StudentServiceAspect2 {
 
-    @Pointcut("execution(* com.java1234.c03AOP.com.java1234.service.*.*(..))")
+    @Pointcut("execution(* com.java1234.service.*.*(..))")
     public void pointcutName() {
     }
 

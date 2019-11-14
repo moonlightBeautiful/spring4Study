@@ -7,20 +7,19 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-    <!-- 1.编程式AOP，需要启动注解 -->
-    <!-- 注解扫描 -->
-    <context:component-scan base-package="com.java1234.c03AOP.advice"/>
-    <!-- 启动aop的注解解析器 -->
-    <aop:aspectj-autoproxy/>
+    <!--&lt;!&ndash; 编程式AOP，需要启动注解 &ndash;&gt;
+    &lt;!&ndash; 注解扫描 &ndash;&gt;
+    <context:component-scan base-package="com.java1234.advice"/>
+    &lt;!&ndash; 启动aop的注解解析器 &ndash;&gt;
+    <aop:aspectj-autoproxy/>-->
+    <bean id="studentService" class="com.java1234.service.impl.StudentServiceImpl"></bean>
 
-    <bean id="studentService" class="com.java1234.c03AOP.com.java1234.service.impl.StudentServiceImpl"></bean>
-
-    <!-- 2.xml式AOP -->
+    <!-- 2.xml式AOP-->
     <!-- 切面 -->
-    <bean id="studentServiceAspect" class="com.java1234.c03AOP.advice.StudentServiceAspect"></bean>
+    <bean id="studentServiceAspect" class="com.java1234.advice.StudentServiceAspect"></bean>
     <aop:config>
         <!--切点-->
-        <aop:pointcut expression="execution(* com.java1234.c03AOP.com.java1234.service.*.*(..))" id="studentServicePointcut"/>
+        <aop:pointcut expression="execution(* com.java1234.service.*.*(..))" id="studentServicePointcut"/>
         <!-- 通知 -->
         <aop:aspect id="studentServiceAspect" ref="studentServiceAspect">
             <aop:before method="doBefore" pointcut-ref="studentServicePointcut"/>

@@ -1,4 +1,4 @@
-package com.java1234.c03AOP.advice;
+package com.java1234.advice;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
