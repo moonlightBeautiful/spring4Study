@@ -26,14 +26,14 @@ AOP（Aspect Oriented Programming）面向切面编程
                 <aop:after-throwing method="doAfterThrowing" pointcut-ref="studentServicePointcut" throwing="ex"/>
             </aop:aspect>
         </aop:config>
-    2.注解式：先开启aop注解功能，然后使用注解定义切面、切点、通知
+    2.编码注解式：先开启aop注解功能，然后使用注解定义切面、切点、通知
         在切面类中使用
             @Aspect
             @Component
             @Pointcut("execution(* com.java1234.c03AOP.com.java1234.service.*.*(..))")
             @Before("pointcutName()")
         xml开启注解功能
-            <!-- 注解扫描 -->
-            <context:component-scan base-package="com.java1234.c03AOP.advice"/>
             <!-- 启动aop的注解解析器 -->
             <aop:aspectj-autoproxy/>
+            <bean id="studentServiceAspect" class="com.java1234.c03AOP.advice.StudentServiceAspect2"></bean>
+            
