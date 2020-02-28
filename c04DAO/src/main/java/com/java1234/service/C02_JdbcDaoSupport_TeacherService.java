@@ -1,15 +1,11 @@
-package com.java1234.JDBC.dao;
+package com.java1234.service;
 
-import com.java1234.JDBC.model.Teacher;
+import com.java1234.model.Teacher;
 
 import java.util.List;
 
-/**
- * @author gaoxu
- * @date 2019-06-18 11:28
- * @description ... 类
- */
-public interface TeacherDao {
+public interface C02_JdbcDaoSupport_TeacherService {
+
     public int addTeacher(Teacher student);
 
     public int updateTeacher(Teacher student);

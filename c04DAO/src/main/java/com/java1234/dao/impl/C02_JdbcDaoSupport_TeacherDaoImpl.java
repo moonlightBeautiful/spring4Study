@@ -1,7 +1,7 @@
-package com.java1234.JDBC.dao.impl;
+package com.java1234.dao.impl;
 
-import com.java1234.JDBC.dao.TeacherDao;
-import com.java1234.JDBC.model.Teacher;
+import com.java1234.dao.C02_JdbcDaoSupport_TeacherDao;
+import com.java1234.model.Teacher;
 import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
@@ -15,7 +15,7 @@ import java.util.List;
  * @date 2019-06-18 11:34
  * @description ... 类
  */
-public class TeacherDaoImpl extends JdbcDaoSupport implements TeacherDao {
+public class C02_JdbcDaoSupport_TeacherDaoImpl extends JdbcDaoSupport implements C02_JdbcDaoSupport_TeacherDao {
 
 
     @Override

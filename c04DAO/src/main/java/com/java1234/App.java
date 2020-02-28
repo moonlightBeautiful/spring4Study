@@ -1,9 +1,5 @@
-package com.java1234.JDBC;
+package com.java1234;
 
-
-import com.java1234.JDBC.service.StudentService;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * Hello world!
@@ -11,24 +7,22 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class App {
     public static void main(String[] args) {
 
-        ApplicationContext ac = new ClassPathXmlApplicationContext("c041beans.xml");//加载bean配置文件
-
-        /*
-           对DAO的支持：Jdbctemplate作为dao类的属性使用
-        */
-        //1.jdbctemplate作为dao类的属性使用
-        StudentService studentService = (StudentService) ac.getBean("studentService");
+        /**
+         * spring对DAO的支持1：Jdbctemplate作为dao实现类的属性使用
+         */
+       /* ApplicationContext ac = new ClassPathXmlApplicationContext("01jdbcTemplate.xml");
+        C01_JdbcTemplate_StudentService studentService = (C01_JdbcTemplate_StudentService) ac.getBean("studentService");*/
         //studentService.addStudent(new Student("李四", 144));
         //studentService.deleteStudent(11);
         //studentService.updateStudent(new Student(2,"李四", 144));
-       /* List<Student> studentList=studentService.findStudents();
+        /* List<Student> studentList=studentService.findStudents();
         for(Student student:studentList){
             System.out.println(student);
         }*/
 
-       /*
-           2.JdbcSupport作为dao类的父类使用，JdbcSupport有Jdbctemplate属性
-        */
+        /**
+         * spring对DAO的支持2：JdbcSupport作为dao类的父类使用，JdbcSupport有Jdbctemplate属性
+         */
         /*TeacherService teacherService = (TeacherService) ac.getBean("teacherService");
         teacherService.addTeacher(new Teacher("李四", 1));*/
 

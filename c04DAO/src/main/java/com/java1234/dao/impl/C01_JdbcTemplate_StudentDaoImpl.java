@@ -1,7 +1,7 @@
-package com.java1234.JDBC.dao.impl;
+package com.java1234.dao.impl;
 
-import com.java1234.JDBC.dao.StudentDao;
-import com.java1234.JDBC.model.Student;
+import com.java1234.dao.C01_JdbcTemplate_StudentDao;
+import com.java1234.model.Student;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowCallbackHandler;
 
@@ -15,7 +15,7 @@ import java.util.List;
  * @date 2019-06-18 11:34
  * @description ... 类
  */
-public class StudentDaoImpl implements StudentDao {
+public class C01_JdbcTemplate_StudentDaoImpl implements C01_JdbcTemplate_StudentDao {
     private JdbcTemplate jdbcTemplate;
 
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {

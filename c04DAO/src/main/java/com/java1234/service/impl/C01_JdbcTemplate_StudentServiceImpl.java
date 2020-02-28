@@ -1,17 +1,17 @@
-package com.java1234.JDBC.service.impl;
+package com.java1234.service.impl;
 
 
-import com.java1234.JDBC.dao.StudentDao;
-import com.java1234.JDBC.model.Student;
-import com.java1234.JDBC.service.StudentService;
+import com.java1234.dao.C01_JdbcTemplate_StudentDao;
+import com.java1234.model.Student;
+import com.java1234.service.C01_JdbcTemplate_StudentService;
 
 import java.util.List;
 
-public class StudentServiceImpl implements StudentService {
+public class C01_JdbcTemplate_StudentServiceImpl implements C01_JdbcTemplate_StudentService {
 
-    private StudentDao studentDao;
+    private C01_JdbcTemplate_StudentDao studentDao;
 
-    public void setStudentDao(StudentDao studentDao) {
+    public void setStudentDao(C01_JdbcTemplate_StudentDao studentDao) {
         this.studentDao = studentDao;
     }
 

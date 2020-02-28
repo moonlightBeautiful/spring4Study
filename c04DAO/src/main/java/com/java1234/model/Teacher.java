@@ -1,30 +1,30 @@
-package com.java1234.JDBC.model;
+package com.java1234.model;
 
 /**
  * @author gaoxu
  * @date 2019-06-18 11:29
  * @description ... 类
  */
-public class President {
+public class Teacher {
     private int id;
     private String name;
     private int age;
 
 
-    public President() {
+    public Teacher() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 
-    public President(String name, int age) {
+    public Teacher(String name, int age) {
         super();
         this.name = name;
         this.age = age;
     }
 
 
-    public President(int id, String name, int age) {
+    public Teacher(int id, String name, int age) {
         super();
         this.id = id;
         this.name = name;

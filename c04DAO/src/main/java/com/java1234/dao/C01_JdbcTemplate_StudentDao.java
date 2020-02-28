@@ -1,6 +1,6 @@
-package com.java1234.JDBC.dao;
+package com.java1234.dao;
 
-import com.java1234.JDBC.model.Student;
+import com.java1234.model.Student;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import java.util.List;
  * @date 2019-06-18 11:28
  * @description ... 类
  */
-public interface StudentDao {
+public interface C01_JdbcTemplate_StudentDao {
     public int addStudent(Student student);
 
     public int updateStudent(Student student);
