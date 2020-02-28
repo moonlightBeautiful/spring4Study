@@ -7,27 +7,28 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <!--xml式AOP -->
 
     <bean id="studentService" class="com.java1234.service.impl.StudentServiceImpl"></bean>
 
-
-    <!-- 1.编程式AOP -->
-    <!--<aop:aspectj-autoproxy/>
-    <bean id="studentServiceAspect" class="com.java1234.advice.StudentServiceAspect2"></bean> -->
-
-    <!-- 2.xml式AOP -->
     <!-- 切面 -->
-    <bean id="studentServiceAspect" class="com.java1234.advice.StudentServiceAspect"></bean>
+    <bean id="studentServiceAspect" class="com.java1234.advice.XmlAspect"></bean>
     <aop:config>
         <!--切点-->
-        <aop:pointcut expression="execution(* com.java1234.service.*.*(..))" id="studentServicePointcut"/>
+        <aop:pointcut expression="execution(* com.java1234.service..*.*(..))" id="studentServicePointcut"/>
         <!-- 通知  -->
         <aop:aspect id="studentServiceAspect" ref="studentServiceAspect">
-            <aop:before method="doBefore" pointcut-ref="studentServicePointcut"/>
             <aop:after method="doAfter" pointcut-ref="studentServicePointcut"/>
-            <aop:around method="doAround" pointcut-ref="studentServicePointcut"/>
             <aop:after-returning method="doAfterReturning" pointcut-ref="studentServicePointcut"/>
+
             <aop:after-throwing method="doAfterThrowing" pointcut-ref="studentServicePointcut" throwing="ex"/>
+
+            <aop:before method="doBefore" pointcut-ref="studentServicePointcut"/>
+            <aop:around method="doAround" pointcut-ref="studentServicePointcut"/>
+
+
+
+
         </aop:aspect>
     </aop:config>
 

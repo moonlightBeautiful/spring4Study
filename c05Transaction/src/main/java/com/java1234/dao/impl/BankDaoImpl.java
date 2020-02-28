@@ -24,7 +24,7 @@ public class BankDaoImpl implements BankDao {
     public void inMoney(int money, int userId) {
         // TODO Auto-generated method stub
         //String sql = "update t_count set count=count+:money where userId=:userId";
-        String sql = "update t_count2 set count=count+:money where userId=:userId";
+        String sql = "update t_count2 set money=money+:money where userId=:userId";
         MapSqlParameterSource sps = new MapSqlParameterSource();
         sps.addValue("money", money);
         sps.addValue("userId", userId);
@@ -34,7 +34,7 @@ public class BankDaoImpl implements BankDao {
     @Override
     public void outMoney(int money, int userId) {
         // TODO Auto-generated method stub
-        String sql = "update t_count set count=count-:money where userId=:userId";
+        String sql = "update t_count set money=money-:money where userId=:userId";
         MapSqlParameterSource sps = new MapSqlParameterSource();
         sps.addValue("money", money);
         sps.addValue("userId", userId);

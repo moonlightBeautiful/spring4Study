@@ -1,39 +1,40 @@
-package com.java1234.c05transaction.dao.impl;
+package com.java1234.dao.impl;
 
-import com.java1234.c05transaction.dao.BankDao;
+import com.java1234.dao.BankDao;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
-
 public class BankDaoImpl implements BankDao {
 
-    private NamedParameterJdbcTemplate myNamedParameterJdbcTemplate;
+    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-
-    public void setMyNamedParameterJdbcTemplate(
+    public void setNamedParameterJdbcTemplate(
             NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
-        this.myNamedParameterJdbcTemplate = namedParameterJdbcTemplate;
+        this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
     }
 
+    /**
+     * @param money
+     * @param userId
+     */
     @Override
     public void inMoney(int money, int userId) {
         // TODO Auto-generated method stub
-        //故意写错表，转账不进来
-        String sql = "update t_count set count=count+:money where userId=:userId";
+        String sql = "update t_count set money=money+:money where userId=:userId";
         MapSqlParameterSource sps = new MapSqlParameterSource();
         sps.addValue("money", money);
         sps.addValue("userId", userId);
-        myNamedParameterJdbcTemplate.update(sql, sps);
+        namedParameterJdbcTemplate.update(sql, sps);
     }
 
     @Override
     public void outMoney(int money, int userId) {
         // TODO Auto-generated method stub
-        String sql = "update t_count set count=count-:money where userId=:userId";
+        String sql = "update t_count set money=money-:money where userId=:userId";
         MapSqlParameterSource sps = new MapSqlParameterSource();
         sps.addValue("money", money);
         sps.addValue("userId", userId);
-        myNamedParameterJdbcTemplate.update(sql, sps);
+        namedParameterJdbcTemplate.update(sql, sps);
     }
 
 }

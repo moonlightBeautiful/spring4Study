@@ -5,16 +5,13 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
-//@Aspect + @Pointcut() + 各种通知注解
-//      @Aspect：实例化切面类
-//      @Pointcut()：定一个切点
-//      各种通知注解@Before()、@After()、@Around()、@After-returning、@After-throwing：通知切点
-@Aspect
 @Component
-public class StudentServiceAspect2 {
+@Aspect
+public class AnnotationAspect {
 
-    @Pointcut("execution(* com.java1234.service.*.*(..))")
+    @Pointcut("execution(* com.java1234.service..*.*(..))")
     public void pointcutName() {
+        System.out.println("============进入aspect方法==============");
     }
 
     /**
@@ -26,9 +23,9 @@ public class StudentServiceAspect2 {
     @Before("pointcutName()")
     public void doBefore(JoinPoint jp) {
         System.out.println("前置通知==============");
-        System.out.println("类名:" + jp.getTarget().getClass().getName());
+      /*  System.out.println("类名:" + jp.getTarget().getClass().getName());
         System.out.println("方法名：" + jp.getSignature().getName());
-        System.out.println("参数：" + jp.getArgs()[0]);
+        System.out.println("参数：" + jp.getArgs()[0]);*/
 
     }
 
@@ -41,10 +38,10 @@ public class StudentServiceAspect2 {
     @After("pointcutName()")
     public void doAfter(JoinPoint jp) {
         System.out.println("后置通知==============");
-        System.out.println("类名:" + jp.getTarget().getClass().getName());
+       /* System.out.println("类名:" + jp.getTarget().getClass().getName());
         System.out.println("方法名：" + jp.getSignature().getName());
         System.out.println("参数：" + jp.getArgs()[0]);
-
+*/
     }
 
     /**
@@ -60,7 +57,7 @@ public class StudentServiceAspect2 {
         System.out.println("环绕通知1==============");
         Object retVal = pjp.proceed();
         System.out.println("环绕通知2==============");
-        System.out.println(retVal);
+        /* System.out.println(retVal);*/
     }
 
     /**

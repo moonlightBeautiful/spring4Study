@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:cache="http://www.springframework.org/schema/cache"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
-    <!-- 注解式事务管理 -->
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd
+            http://www.springframework.org/schema/cache
+            http://www.springframework.org/schema/cache/spring-cache.xsd">
+    <!-- 注解式缓存 -->
 
     <!-- 数据源配置 -->
     <context:property-placeholder location="jdbc.properties"/>
@@ -26,15 +29,18 @@
     <bean id="bankDao" class="com.java1234.dao.impl.BankDaoImpl">
         <property name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"></property>
     </bean>
-
     <bean id="bankService" class="com.java1234.service.impl.BankServiceImpl">
         <property name="bankDao" ref="bankDao"></property>
     </bean>
 
-    <!-- 事务管理器 -->
-    <bean id="defaultTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource"></property>
+    <!--缓存配置-->
+    <!--mode="proxy" proxy-target-class="true"-->
+    <cache:annotation-driven/>
+    <bean id="cacheFactory" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+        <property name="configLocation" value="classpath:ehcache.xml"/>
     </bean>
-    <!-- 启动事务管理注解 -->
-    <tx:annotation-driven transaction-manager="defaultTransactionManager"/>
+    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+        <property name="cacheManager" ref="cacheFactory"></property>
+    </bean>
+
 </beans>

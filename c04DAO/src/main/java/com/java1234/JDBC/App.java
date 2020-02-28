@@ -11,7 +11,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class App {
     public static void main(String[] args) {
 
-        ApplicationContext ac = new ClassPathXmlApplicationContext("c04DAO/c01JDBC/c041beans.xml");//加载bean配置文件
+        ApplicationContext ac = new ClassPathXmlApplicationContext("c041beans.xml");//加载bean配置文件
 
         /*
            对DAO的支持：Jdbctemplate作为dao类的属性使用

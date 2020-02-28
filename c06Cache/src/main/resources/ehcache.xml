@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache updateCheck="false">
+    <diskStore path="./ehcache"/>
+    <defaultCache
+            maxElementsInMemory="10"
+            eternal="false"
+            timeToIdleSeconds="2"
+            timeToLiveSeconds="5"
+            overflowToDisk="true"
+            diskPersistent="false"
+            diskExpiryThreadIntervalSeconds="1"
+            memoryStoreEvictionPolicy="LRU"/>
+    <cache name="myCache"
+           maxElementsInMemory="10000"
+           eternal="false"
+           overflowToDisk="true"
+           timeToIdleSeconds="3"
+           timeToLiveSeconds="5"
+           memoryStoreEvictionPolicy="LFU"/>
+</ehcache>

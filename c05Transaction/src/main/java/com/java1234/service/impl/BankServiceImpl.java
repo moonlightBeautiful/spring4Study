@@ -13,8 +13,9 @@ public class BankServiceImpl implements BankService {
 
     private BankDao bankDao;
 
-    /*private TransactionTemplate transactionTemplate;*/
-
+    //TransactionTemplate编程式事务需要
+    /*private TransactionTemplate transactionTemplate;
+*/
     public void setBankDao(BankDao bankDao) {
         this.bankDao = bankDao;
     }

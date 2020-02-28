@@ -2,13 +2,16 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/tx
-        http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
     <!-- xml式事务管理 -->
 
     <!-- 数据源配置 -->
@@ -26,10 +29,6 @@
     </bean>
 
 
-    <!-- 事务管理器 -->
-    <bean id="myTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource"></property>
-    </bean>
     <!-- 业务 -->
     <bean id="bankDao" class="com.java1234.dao.impl.BankDaoImpl">
         <property name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"></property>
@@ -37,6 +36,11 @@
 
     <bean id="bankService" class="com.java1234.service.impl.BankServiceImpl">
         <property name="bankDao" ref="bankDao"></property>
+    </bean>
+
+    <!-- 事务管理器 -->
+    <bean id="myTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
     </bean>
 
     <!-- 配置事务通知 -->
@@ -55,14 +59,14 @@
             <tx:method name="get*" propagation="REQUIRED" read-only="true"/>
             <tx:method name="find*" propagation="REQUIRED" read-only="true"/>
             <tx:method name="load*" propagation="REQUIRED" read-only="true"/>
-            <tx:method name="*" propagation="REQUIRED" read-only="true"/>
+            <tx:method name="*" propagation="REQUIRED"/>
         </tx:attributes>
     </tx:advice>
 
     <!-- 配置事务切面 -->
     <aop:config>
         <!-- 切点 -->
-        <aop:pointcut id="serviceMethod" expression="execution(* com.java1234.service.*.*(..))"/>
+        <aop:pointcut id="serviceMethod" expression="execution(* com.java1234.service..*(..))"/>
         <!-- 事务通知 -->
         <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethod"/>
     </aop:config>
