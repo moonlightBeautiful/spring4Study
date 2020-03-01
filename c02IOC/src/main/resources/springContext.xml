@@ -5,41 +5,7 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
     <!--default-autowire="byName"-->
 
-    <!-- 注入参数方式、注入参数类型、bean类型自动注入、每次获取bean的范围、bean之间的依赖 -->
 
-    <!-- 注入参数方式4种：属性注入、构造方法注入、工厂注入、级联注入 -->
-    <!-- 1.无注入，则实例化的bean的属性为默认值-->
-    <bean id="people" class="com.java1234.entity.People">
-    </bean>
-    <!-- 2.属性注入 = 按名匹配注入-->
-    <bean id="people1" class="com.java1234.entity.People">
-        <property name="id" value="1"></property>
-        <property name="name" value="小1"></property>
-        <property name="age" value="11"></property>
-    </bean>
-    <!-- 3.构造方法注入 - 按类型匹配注入-->
-    <bean id="people2" class="com.java1234.entity.People">
-        <constructor-arg type="int" value="2"></constructor-arg>
-        <constructor-arg type="String" value="小2"></constructor-arg>
-        <constructor-arg type="int" value="12"></constructor-arg>
-    </bean>
-    <!--构造方法注入 - 按索引匹配注入-->
-    <bean id="people3" class="com.java1234.entity.People">
-        <constructor-arg index="0" value="3"></constructor-arg>
-        <constructor-arg index="1" value="小3"></constructor-arg>
-        <constructor-arg index="2" value="13"></constructor-arg>
-    </bean>
-    <!-- 构造方法注入 - 按类型和索引组合匹配注入-->
-    <bean id="people4" class="com.java1234.entity.People">
-        <constructor-arg index="0" type="int" value="4"></constructor-arg>
-        <constructor-arg index="1" type="String" value="小4"></constructor-arg>
-        <constructor-arg index="2" type="int" value="14"></constructor-arg>
-    </bean>
-    <!-- 4.工厂注入 - 非静态方法-->
-    <bean id="peopleFactory" class="com.java1234.factory.PeopleFactory1"></bean>
-    <bean id="people5" factory-bean="peopleFactory" factory-method="createPeople"></bean>
-    <!-- 工厂注入 - 静态方法-->
-    <bean id="people6" class="com.java1234.factory.PeopleFactory2" factory-method="createPeople"></bean>
     <!-- 5.级联注入，需要现在类中实例化属性，= new 类型() -->
     <!-- <bean id="hunter" class="com.java1234.entity.Hunter">
          <property name="id" value="4"></property>
@@ -49,77 +15,6 @@
      </bean>-->
 
 
-    <!-- 注入参数类型6种：基本数据类型、bean类型、null类型注入、级联注入、集合类型注入、Map类型注入 -->
-    <!-- 2.bean类型 - 外部注入-->
-    <bean id="dog1" class="com.java1234.entity.Dog">
-        <property name="name" value="狗1"></property>
-    </bean>
-    <bean id="hunter1" class="com.java1234.entity.Hunter">
-        <property name="id" value="1"></property>
-        <property name="name" value="猎人1"></property>
-        <property name="age" value="11"></property>
-        <property name="dog" ref="dog1"></property>
-    </bean>
-    <!-- bean类型 - 内部注入-->
-    <bean id="hunter2" class="com.java1234.entity.Hunter">
-        <property name="id" value="2"></property>
-        <property name="name" value="猎人2"></property>
-        <property name="age" value="12"></property>
-        <property name="dog">
-            <bean class="com.java1234.entity.Dog">
-                <property name="name" value="狗2"></property>
-            </bean>
-        </property>
-    </bean>
-    <!-- 3.null类型 -->
-    <bean id="hunter3" class="com.java1234.entity.Hunter">
-        <property name="id" value="3"></property>
-        <property name="name">
-            <null></null>
-        </property>
-        <property name="age" value="13">
-        </property>
-        <property name="dog">
-            <null></null>
-        </property>
-    </bean>
-    <!-- 456.集合（list、set）、映射（map）、property注入 -->
-    <bean id="hunter4" class="com.java1234.entity.Hunter">
-        <property name="hobbies">
-            <list>
-                <value>唱歌</value>
-                <value>跳舞</value>
-            </list>
-        </property>
-        <property name="loves">
-            <set>
-                <value>唱歌2</value>
-                <value>跳舞2</value>
-            </set>
-        </property>
-        <property name="works">
-            <map>
-                <entry>
-                    <key>
-                        <value>上午</value>
-                    </key>
-                    <value>写代码</value>
-                </entry>
-                <entry>
-                    <key>
-                        <value>下午</value>
-                    </key>
-                    <value>测试代码</value>
-                </entry>
-            </map>
-        </property>
-        <property name="addresses">
-            <props>
-                <prop key="address1">地址1</prop>
-                <prop key="address2">地址2</prop>
-            </props>
-        </property>
-    </bean>
 
 
     <!-- bean类型参数自动（头部default-autowire属性）3种：根据名字、根据类型、根据构造方法 -->

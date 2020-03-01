@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 注入方式4种：属性注入、构造方法注入、工厂注入、级联注入 -->
+
+    <!-- 0.无注入，则实例化的bean的属性为默认值-->
+    <bean id="people" class="com.java1234.entity.People"></bean>
+
+    <!-- 1.属性注入 = 按名匹配注入-->
+    <bean id="people1" class="com.java1234.entity.People">
+        <property name="id" value="1"></property>
+        <property name="name" value="小1"></property>
+        <property name="age" value="11"></property>
+    </bean>
+
+    <!-- 2.构造方法注入 - 按类型和索引组合匹配注入，也可以分开独自使用 -->
+    <bean id="people2" class="com.java1234.entity.People">
+        <constructor-arg index="0" type="int" value="2"></constructor-arg>
+        <constructor-arg index="1" type="String" value="小2"></constructor-arg>
+        <constructor-arg index="2" type="int" value="12"></constructor-arg>
+    </bean>
+
+    <!--3.工厂注入 - 1、工厂非静态方法-->
+    <bean id="peopleFactory" class="com.java1234.factory.PeopleFactory"></bean>
+    <bean id="people31" factory-bean="peopleFactory" factory-method="createPeople1"></bean>
+    <!--3.工厂注入 - 2、工厂静态方法-->
+    <bean id="people32" class="com.java1234.factory.PeopleFactory" factory-method="createPeople2"></bean>
+
+    <!--
+       5.级联注入，需要现在类中实例化属性，= new 类型()
+       <bean id="hunter" class="com.java1234.entity.Hunter">
+           <property name="id" value="4"></property>
+           <property name="name" value="猎人4"></property>
+           <property name="age" value="14"></property>
+           <property name="dog.name" value="狗4"></property>
+       </bean>-->
+</beans>
