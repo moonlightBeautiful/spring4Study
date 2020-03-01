@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- bean的作用域scope -->
+
+    <!-- 1.单例，默认singleton，每次获取的bean都是同一个 -->
+    <bean id="myDog1" class="com.java1234.entity.Dog" scope="singleton">
+        <property name="name" value="myDog1"></property>
+    </bean>
+
+    <!-- 2.多例，prototype，每次获取的bean都是同新的-->
+    <bean id="myDog2" class="com.java1234.entity.Dog" scope="prototype">
+        <property name="name" value="myDog2"></property>
+    </bean>
+
+    <!-- 3. bean1配置成单例，属性bean2配置成多例。默认每次获取的bean1和属性bean2依然是单例。 -->
+    <!--<bean id="hunter3" class="com.java1234.entity.Hunter" scope="singleton">
+        <property name="id" value="3"></property>
+        <property name="name" value="猎人3"></property>
+        <property name="age" value="13"></property>
+        <property name="dog" ref="myDog2"></property>
+    </bean>-->
+
+    <!--4.bean1配置成单例，属性bean2配置成多例。可以每次获取的bean1单例和属性bean2多例,使用方法注入，但是基本不用。-->
+    <bean id="hunter4" class="com.java1234.entity.Hunter" scope="singleton">
+        <property name="id" value="3"></property>
+        <property name="name" value="猎人3"></property>
+        <property name="age" value="13"></property>
+        <lookup-method name="getDog" bean="myDog2"></lookup-method>
+    </bean>
+</beans>

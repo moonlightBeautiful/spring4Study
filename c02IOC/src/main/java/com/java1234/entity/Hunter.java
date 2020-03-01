@@ -2,12 +2,12 @@ package com.java1234.entity;
 
 import java.util.*;
 
-public class Hunter {
+public abstract class Hunter {
 
     private int id;
     private String name;
     private int age;
-/*    private Dog dog;*/
+    /*    private Dog dog;*/
     private Dog dog = new Dog();  //级联属性注入，需要先实例化
     private List<String> hobbies = new ArrayList<String>();
     private Set<String> loves = new HashSet<String>();
@@ -27,6 +27,15 @@ public class Hunter {
         this.age = age;
     }
 
+    /**
+     * 构造方法自动注入使用
+     *
+     * @param dog
+     */
+    public Hunter(Dog dog) {
+        super();
+        this.dog = dog;
+    }
 
     public Set<String> getLoves() {
         return loves;
@@ -68,16 +77,16 @@ public class Hunter {
     }
 
 
-    public Dog getDog() {
+   /* public Dog getDog() {
         return dog;
-    }
+    }*/
 
+    //方法注入用
+    public abstract Dog getDog();
 
     public void setDog(Dog dog) {
         this.dog = dog;
     }
-
-
     public int getId() {
         return id;
     }

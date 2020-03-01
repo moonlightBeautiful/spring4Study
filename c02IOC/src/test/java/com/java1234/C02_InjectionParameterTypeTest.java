@@ -16,7 +16,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * 5.Map类型。
  * 6.property类型。
  */
-public class InjectionParameterTypeTest {
+public class C02_InjectionParameterTypeTest {
     private ApplicationContext ac;
 
     @Before
