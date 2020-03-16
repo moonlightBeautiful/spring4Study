@@ -10,7 +10,7 @@
         2.IOC两种方式
             1.注解方式：但是要在xml中开始组件扫描功能
                 组件注解有：虽然分了层，但目前这四个注解的功能是一样的。实例化的默认值值是类名的开头小写。
-                    @Component  com.java1234.entity
+                    @Component  com.ims.entity
                     @Service：业务层
                     @Controller：WEB层
                     @Repository：持久层

@@ -1,8 +1,4 @@
-package com.java1234;
-
-/**
- * 通过xml实例化Hello
- */
+package com.ims;
 public class Hello {
 
     public void say() {

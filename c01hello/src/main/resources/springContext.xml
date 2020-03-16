@@ -7,8 +7,8 @@
             http://www.springframework.org/schema/context
             http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="com.java1234"/>
+    <context:component-scan base-package="com.ims"/>
 
-    <bean id="hello" class="com.java1234.Hello"></bean>
+    <bean id="hello" class="com.ims.Hello"></bean>
 
 </beans>
