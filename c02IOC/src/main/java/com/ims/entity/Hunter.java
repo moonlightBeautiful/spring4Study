@@ -1,8 +1,9 @@
-package com.java1234.entity;
+package com.ims.entity;
 
 import java.util.*;
 
-public abstract class Hunter {
+//abstract
+public class Hunter {
 
     private int id;
     private String name;
@@ -77,16 +78,17 @@ public abstract class Hunter {
     }
 
 
-   /* public Dog getDog() {
+    public Dog getDog() {
         return dog;
-    }*/
+    }
 
     //方法注入用
-    public abstract Dog getDog();
+    /*public abstract Dog getDog();*/
 
     public void setDog(Dog dog) {
         this.dog = dog;
     }
+
     public int getId() {
         return id;
     }

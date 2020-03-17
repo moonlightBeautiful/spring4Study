@@ -1,4 +1,4 @@
-package com.java1234.service;
+package com.ims.service;
 
 public class Authority {
 

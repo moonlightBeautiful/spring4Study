@@ -1,7 +1,7 @@
-package com.java1234.factory;
+package com.ims.factory;
 
 
-import com.java1234.entity.People;
+import com.ims.entity.People;
 
 public class PeopleFactory {
 

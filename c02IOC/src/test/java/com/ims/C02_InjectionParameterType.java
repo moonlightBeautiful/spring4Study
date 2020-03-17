@@ -1,6 +1,6 @@
-package com.java1234;
+package com.ims;
 
-import com.java1234.entity.Hunter;
+import com.ims.entity.Hunter;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +16,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * 5.Map类型。
  * 6.property类型。
  */
-public class C02_InjectionParameterTypeTest {
+public class C02_InjectionParameterType {
     private ApplicationContext ac;
 
     @Before
@@ -65,7 +65,7 @@ public class C02_InjectionParameterTypeTest {
     }
 
     /**
-     * 5.级联类型参数注入
+     * 5.集合 映射 属性注入
      */
     @Test
     public void collectionMaoPropertyTypeParameterInjection() {

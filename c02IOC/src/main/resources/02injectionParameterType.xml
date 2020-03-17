@@ -8,29 +8,29 @@
     <!-- 1.基本数据类型 - 不在举例-->
 
     <!-- 2.bean类型 - 1、外部注入-->
-    <bean id="dog21" class="com.java1234.entity.Dog">
+    <bean id="dog21" class="com.ims.entity.Dog">
         <property name="name" value="狗21"></property>
     </bean>
-    <bean id="hunter21" class="com.java1234.entity.Hunter">
+    <bean id="hunter21" class="com.ims.entity.Hunter">
         <property name="id" value="21"></property>
         <property name="name" value="猎人21"></property>
         <property name="age" value="12"></property>
         <property name="dog" ref="dog21"></property>
     </bean>
     <!-- 2.bean类型 - 2、内部注入-->
-    <bean id="hunter22" class="com.java1234.entity.Hunter">
+    <bean id="hunter22" class="com.ims.entity.Hunter">
         <property name="id" value="22"></property>
         <property name="name" value="猎人22"></property>
         <property name="age" value="12"></property>
         <property name="dog">
-            <bean class="com.java1234.entity.Dog">
+            <bean class="com.ims.entity.Dog">
                 <property name="name" value="狗22"></property>
             </bean>
         </property>
     </bean>
 
     <!-- 3.null类型 -->
-    <bean id="hunter3" class="com.java1234.entity.Hunter">
+    <bean id="hunter3" class="com.ims.entity.Hunter">
         <property name="id" value="3"></property>
         <property name="name">
             <null></null>
@@ -43,7 +43,7 @@
     </bean>
 
     <!-- 4.级联类型 -->
-    <bean id="hunter4" class="com.java1234.entity.Hunter">
+    <bean id="hunter4" class="com.ims.entity.Hunter">
         <property name="id" value="4"></property>
         <property name="name" value="猎人4"></property>
         <property name="age" value="14"></property>
@@ -51,7 +51,7 @@
     </bean>
 
     <!-- 5.集合（list、set）类型、映射（map）类型、property类型-->
-    <bean id="hunter5" class="com.java1234.entity.Hunter">
+    <bean id="hunter5" class="com.ims.entity.Hunter">
         <property name="hobbies">
             <list>
                 <value>唱歌</value>

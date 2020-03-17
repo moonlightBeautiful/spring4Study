@@ -1,6 +1,6 @@
-package com.java1234;
+package com.ims;
 
-import com.java1234.entity.Hunter;
+import com.ims.entity.Hunter;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

@@ -9,10 +9,10 @@
 
 
     <!--1、bean类型自动注入 byName：bean的id和注入的属性名相同-->
-    <!--<bean id="dog" class="com.java1234.entity.Dog">
+    <!--<bean id="dog" class="com.imsty.Dog">
         <property name="name" value="狗"></property>
     </bean>
-    <bean id="hunter1" class="com.java1234.entity.Hunter">
+    <bean id="hunter1" class="com.imsty.Hunter">
         <property name="id" value="1"></property>
         <property name="name" value="猎人1"></property>
         <property name="age" value="1"></property>
@@ -20,20 +20,20 @@
 
 
     <!--2、bean类型自动注入 byType：bean的类型和注入的属性类型相同，有多个相同的类型则报错，无法识别哪一个-->
-    <!--<bean id="dog2" class="com.java1234.entity.Dog">
+    <!--<bean id="dog2" class="com.imsty.Dog">
         <property name="name" value="狗"></property>
     </bean>
-    <bean id="hunter2" class="com.java1234.entity.Hunter">
+    <bean id="hunter2" class="com.imsty.Hunter">
         <property name="id" value="1"></property>
         <property name="name" value="猎人1"></property>
         <property name="age" value="1"></property>
     </bean>-->
 
     <!--3、bean类型自动注入 constructor：查找对应的构造方法注入，构造方法根据的是类型-->
-    <bean id="dog3" class="com.java1234.entity.Dog">
+    <bean id="dog3" class="com.ims.entity.Dog">
         <property name="name" value="狗3"></property>
     </bean>
-    <bean id="hunter3" class="com.java1234.entity.Hunter">
+    <bean id="hunter3" class="com.ims.entity.Hunter">
         <property name="id" value="1"></property>
         <property name="name" value="猎人1"></property>
         <property name="age" value="1"></property>

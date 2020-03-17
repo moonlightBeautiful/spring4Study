@@ -2,7 +2,7 @@
 1.IOC
     简介：
         控制反转（或者叫依赖注入），就是实例化类交给spring。     
-    依赖注入：实例化类的时候注入属性值。
+    依赖注入：实例化类的时候给属性赋值
         1.注入方式：类要有显式的无参构造方法
             1.属性（setter）：类的属性要有setter方法，按照属性名匹配注入。
             2.构造器（构造方法）：类要有构造方法，按照构造方法参数的索引或类型或其组合来匹配注入。
@@ -16,8 +16,8 @@
             5.集合（list、set）类型、映射（map）类型、property类型**
         3.bean类型自动注入：
             有beans 标签的default-autowire属性控制，默认值default。
-            1.通过名自动注入，default-autowire=byName。
-            2.通过类型自动注入，default-autowire=byType。  
+            1.通过名name自动注入，default-autowire=byName。
+            2.通过类型type自动注入，default-autowire=byType。  
                 如果有多个类型相同的bean，则无法判断哪一个，报错。
             3.通过构造器自动注入，default-autowire=constructor。 
                 要有对应的构造方法(Bean类型)，构造方法根据的是类型。
@@ -33,9 +33,10 @@
         5.每次获取bean的范围：scope    
             1.singleton（默认）：单例，每次获取的bean都是同一个。
             2.prototype：多例，每次获取的bean都是新的。
-            3.单例和多例组合使用：
-                bean1配置成单例，属性bean2配置成多例。默认每次获取的bean1和属性bean2依然是单例。
-                bean1配置成单例，属性bean2配置成多例。可以每次获取的bean1单例和属性bean2多例,使用方法注入，但是基本不用。
+            3.singleton和prototype混合使用：
+                外单内多 = 外单内单
+                外多内单 = 外多内单
+                外单内多 + 方法注入(类抽象+get方法抽象) = 外单内多
             4.request：每次http请求产生一个新bean
             5.session：同一个http session 共享一个bean
             6.global-session：同一个全局http session 共享一个bean
@@ -49,7 +50,7 @@
                 0.猎人有狗属性，猎人scope是单例，狗scope是多例。
                 1.猎人的getDoa方法改为抽象方法 public abstract Dog getDog(); 且类改成抽象类
                 2.xml文件配置，
-                    狗：<bean id="dog" class="com.java1234.entity.Dog" scope="prototype"></bean>
+                    狗：<bean id="dog" class="com.ims.entity.Dog" scope="prototype"></bean>
                     猎人的狗属性注入设置为：<lookup-method name="getDog" bean="dog"></lookup-method>
             很少很少使用，了解即可
         方法替换：
