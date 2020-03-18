@@ -1,9 +1,9 @@
-package com.java1234.advice;
+package com.ims.c02xmlAop.advice;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 
-public class XmlAspect {
+public class XmlStudentAspect {
 
     /**
      * 切点执行之前的动作

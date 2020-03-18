@@ -1,4 +1,4 @@
-package com.java1234.service;
+package com.ims.c01noAop.service;
 
 public interface StudentService {
 

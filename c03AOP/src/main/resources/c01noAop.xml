@@ -4,6 +4,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="studentService" class="com.java1234.service.impl.StudentServiceImpl"></bean>
+    <bean id="studentService" class="com.ims.c01noAop.service.impl.StudentServiceImpl"></bean>
 
 </beans>

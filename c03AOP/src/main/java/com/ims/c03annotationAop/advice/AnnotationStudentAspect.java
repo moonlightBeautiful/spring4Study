@@ -1,4 +1,4 @@
-package com.java1234.advice;
+package com.ims.c03annotationAop.advice;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -7,9 +7,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Aspect
-public class AnnotationAspect {
+public class AnnotationStudentAspect {
 
-    @Pointcut("execution(* com.java1234.service..*.*(..))")
+    @Pointcut("execution(* com.ims.c03annotationAop.service..*.*(..))")
     public void pointcutName() {
         System.out.println("============进入aspect方法==============");
     }
