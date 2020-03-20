@@ -28,12 +28,12 @@ Spring对DAO的支持
                 <property name="password" value="${jdbc.password}"/>
             </bean>
 1.JdbcTemplate使用，使用 ？作为占位符
-    daoImpl类使用JdbcTemplate作为属性进行增删改查
-    daoImpl类需要注入jdbcTemplate
+    JdbcTemplate作为dao实现类的属性进行增删改查，
+    需要为dao实现类注入JdbcTemplate
 2.JdbcDaoSupport使用，其实使用的还是JdbcTemplate
-    daoImpl类继承JdbcDaoSupport，JdbcDaoSupport有JdbcTemplate属性，可以直接使用继承来的JdbcTemplate作为属性进行增删改查           
-    daoImpl类需要注入dataSource
+    dao实现类继承JdbcDaoSupport，JdbcDaoSupport有JdbcTemplate属性供dao实现类使用，
+    需要为dao实现类注入DataSource
 3.NamedParameterJdbcTemplate的使用，使用 :变量名 作为占位符
-    daoImpl类使用NamedParameterJdbcTemplate作为属性进行增删改查
-    daoImpl类需要注入NamedParameterJdbcTemplate
+    NamedParameterJdbcTemplate作为dao实现类的属性进行增删改查，
+    需要为dao实现类注入NamedParameterJdbcTemplate
     

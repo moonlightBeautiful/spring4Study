@@ -1,0 +1,30 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+    	http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- Spring容器只能有一个PropertyPlaceholderConfigurer，如果有多个属性文件，这时就看谁先谁后了，先的保留 ，后的忽略 -->
+    <context:property-placeholder location="jdbc.properties"/>
+    <bean id="dataSource"
+          class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+    <bean id="namedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+        <constructor-arg ref="dataSource"></constructor-arg>
+    </bean>
+    <!--NamedParameterJdbcTemplate作为dao的属性使用 -->
+    <bean id="presidentDao" class="com.ims.c03NamedParameterJdbcTemplate.dao.impl.PresidentDaoImpl">
+        <property name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"></property>
+    </bean>
+
+    <bean id="presidentService" class="com.ims.c03NamedParameterJdbcTemplate.service.impl.PresidentServiceImpl">
+        <property name="presidentDao" ref="presidentDao"></property>
+    </bean>
+</beans>
