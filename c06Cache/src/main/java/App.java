@@ -1,5 +1,4 @@
-import com.java1234.service.BankService;
-import com.java1234.service.impl.BankServiceImpl;
+import com.ims.c03NamedParameterJdbcTemplate.service.BankService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

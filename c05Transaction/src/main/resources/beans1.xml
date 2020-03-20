@@ -31,11 +31,11 @@
     </bean>
 
     <!-- 业务 -->
-    <bean id="bankDao" class="com.java1234.dao.impl.BankDaoImpl">
+    <bean id="bankDao" class="com.ims.c03NamedParameterJdbcTemplate.dao.impl.BankDaoImpl">
         <property name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"></property>
     </bean>
 
-    <bean id="bankService" class="com.java1234.service.impl.BankServiceImpl">
+    <bean id="bankService" class="com.ims.c03NamedParameterJdbcTemplate.service.impl.BankServiceImpl">
         <property name="bankDao" ref="bankDao"></property>
         <!-- service层注入事务模板 -->
         <property name="transactionTemplate" ref="transactionTemplate"></property>

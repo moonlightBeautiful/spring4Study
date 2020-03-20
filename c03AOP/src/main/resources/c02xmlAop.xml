@@ -14,7 +14,7 @@
     <bean id="studentService" class="com.ims.c02xmlAop.service.impl.StudentServiceImpl"></bean>
 
     <!-- 切面 -->
-    <bean id="studentServiceAspect" class="com.ims.c02xmlAop.advice.XmlStudentAspect"></bean>
+    <bean id="studentServiceAspect" class="com.ims.c02xmlAop.advice.StudentAspect"></bean>
     <aop:config>
         <!--切点-->
         <aop:pointcut expression="execution(* com.ims.c02xmlAop.service..*.*(..))" id="studentServicePointcut"/>

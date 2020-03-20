@@ -30,11 +30,11 @@
 
 
     <!-- 业务 -->
-    <bean id="bankDao" class="com.java1234.dao.impl.BankDaoImpl">
+    <bean id="bankDao" class="com.ims.c03NamedParameterJdbcTemplate.dao.impl.BankDaoImpl">
         <property name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"></property>
     </bean>
 
-    <bean id="bankService" class="com.java1234.service.impl.BankServiceImpl">
+    <bean id="bankService" class="com.ims.c03NamedParameterJdbcTemplate.service.impl.BankServiceImpl">
         <property name="bankDao" ref="bankDao"></property>
     </bean>
 
@@ -66,7 +66,7 @@
     <!-- 配置事务切面 -->
     <aop:config>
         <!-- 切点 -->
-        <aop:pointcut id="serviceMethod" expression="execution(* com.java1234.service..*(..))"/>
+        <aop:pointcut id="serviceMethod" expression="execution(* com.ims.c03NamedParameterJdbcTemplate.service..*(..))"/>
         <!-- 事务通知 -->
         <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethod"/>
     </aop:config>

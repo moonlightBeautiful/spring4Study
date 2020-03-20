@@ -65,7 +65,7 @@ Spring对事务的支持
                 <!-- 配置事务切面 -->
                 <aop:config>
                     <!-- 配置切点 -->
-                    <aop:pointcut id="serviceMethod" expression="execution(* com.java1234.com.java1234.service.*.*(..))"/>
+                    <aop:pointcut id="serviceMethod" expression="execution(* com.ims.com.ims.service.*.*(..))"/>
                     <!-- 配置事务通知 -->
                     <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethod"/>
                 </aop:config>
