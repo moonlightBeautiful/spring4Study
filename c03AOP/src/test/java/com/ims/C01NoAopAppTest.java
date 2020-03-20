@@ -1,6 +1,6 @@
 package com.ims;
 
-import com.ims.c01noAop.service.StudentService;
+import com.ims.c01_noAop.service.StudentService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

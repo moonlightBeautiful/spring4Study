@@ -8,11 +8,11 @@
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="studentService" class="com.ims.c03annotationAop.service.impl.StudentServiceImpl"></bean>
+    <bean id="studentService" class="com.ims.c03_annotationAop.service.impl.StudentServiceImpl"></bean>
 
     <!-- 启动对@AspectJ注解的支持 -->
     <aop:aspectj-autoproxy proxy-target-class="false"/>
     <!-- 激活组件扫描功能,在包io.mykit.annotation.spring.aop及其子包下面自动扫描通过注解配置的组件 -->
-    <context:component-scan base-package="com.ims.c03annotationAop.advice"/>
+    <context:component-scan base-package="com.ims.c03_annotationAop.advice"/>
 
 </beans>

@@ -32,7 +32,7 @@
     <bean id="bankDao" class="com.ims.c03NamedParameterJdbcTemplate.dao.impl.BankDaoImpl">
         <property name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"></property>
     </bean>
-    <bean id="bankService" class="com.ims.c03NamedParameterJdbcTemplate.service.impl.BankServiceImpl">
+    <bean id="bankService" class="com.ims.service.impl.BankServiceImpl">
         <property name="bankDao" ref="bankDao"></property>
     </bean>
 
@@ -50,6 +50,6 @@
         </cache:caching>
     </cache:advice>
     <aop:config proxy-target-class="false" expose-proxy="false">
-        <aop:advisor advice-ref="cacheAdvice" pointcut="execution(* com.ims.c03NamedParameterJdbcTemplate.service.BankService.transferAccounts(..))"/>
+        <aop:advisor advice-ref="cacheAdvice" pointcut="execution(* com.ims.service.BankService.transferAccounts(..))"/>
     </aop:config>
 </beans>

@@ -24,7 +24,7 @@
         <property name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"></property>
     </bean>
 
-    <bean id="presidentService" class="com.ims.c03NamedParameterJdbcTemplate.service.impl.PresidentServiceImpl">
+    <bean id="presidentService" class="com.ims.service.impl.PresidentServiceImpl">
         <property name="presidentDao" ref="presidentDao"></property>
     </bean>
 </beans>

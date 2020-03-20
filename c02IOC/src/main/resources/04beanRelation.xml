@@ -19,7 +19,7 @@
     <!-- 2.引用：这里就不说了，一直在用 -->
 
     <!-- 3.依赖：依赖的bean先实例化后，才能实例化自己。-->
-    <bean id="authority" class="com.ims.c03NamedParameterJdbcTemplate.service.Authority"></bean>
+    <bean id="authority" class="com.ims.service.Authority"></bean>
     <bean id="liSi" parent="defaultStudent" depends-on="authority">
         <property name="id" value="2"></property>
         <property name="name" value="李四"></property>

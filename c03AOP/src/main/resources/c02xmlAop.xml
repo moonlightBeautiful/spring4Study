@@ -11,13 +11,13 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
     <!--xml式AOP -->
 
-    <bean id="studentService" class="com.ims.c02xmlAop.service.impl.StudentServiceImpl"></bean>
+    <bean id="studentService" class="com.ims.c02_xmlAop.service.impl.StudentServiceImpl"></bean>
 
     <!-- 切面 -->
-    <bean id="studentServiceAspect" class="com.ims.c02xmlAop.advice.StudentAspect"></bean>
+    <bean id="studentServiceAspect" class="com.ims.c02_xmlAop.advice.StudentAspect"></bean>
     <aop:config>
         <!--切点-->
-        <aop:pointcut expression="execution(* com.ims.c02xmlAop.service..*.*(..))" id="studentServicePointcut"/>
+        <aop:pointcut expression="execution(* com.ims.c02_xmlAop.service..*.*(..))" id="studentServicePointcut"/>
         <!-- 切面的通知  -->
         <aop:aspect id="studentServiceAspect" ref="studentServiceAspect">
             <aop:after method="doAfter" pointcut-ref="studentServicePointcut"/>

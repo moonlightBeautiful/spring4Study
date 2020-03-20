@@ -35,7 +35,7 @@
         <property name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"></property>
     </bean>
 
-    <bean id="bankService" class="com.ims.c03NamedParameterJdbcTemplate.service.impl.BankServiceImpl">
+    <bean id="bankService" class="com.ims.service.impl.BankServiceImpl">
         <property name="bankDao" ref="bankDao"></property>
         <!-- service层注入事务模板 -->
         <property name="transactionTemplate" ref="transactionTemplate"></property>

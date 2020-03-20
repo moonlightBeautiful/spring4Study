@@ -1,6 +1,6 @@
 package com.ims;
 
-import com.ims.c03annotationAop.service.StudentService;
+import com.ims.c03_annotationAop.service.StudentService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

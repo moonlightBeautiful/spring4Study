@@ -34,7 +34,7 @@
         <property name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"></property>
     </bean>
 
-    <bean id="bankService" class="com.ims.c03NamedParameterJdbcTemplate.service.impl.BankServiceImpl">
+    <bean id="bankService" class="com.ims.service.impl.BankServiceImpl">
         <property name="bankDao" ref="bankDao"></property>
     </bean>
 
@@ -66,7 +66,7 @@
     <!-- 配置事务切面 -->
     <aop:config>
         <!-- 切点 -->
-        <aop:pointcut id="serviceMethod" expression="execution(* com.ims.c03NamedParameterJdbcTemplate.service..*(..))"/>
+        <aop:pointcut id="serviceMethod" expression="execution(* com.ims.service..*(..))"/>
         <!-- 事务通知 -->
         <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethod"/>
     </aop:config>
