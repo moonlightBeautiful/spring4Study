@@ -1,7 +1,7 @@
 package com.ims.c02programmingTransaction.service.impl;
 
 import com.ims.c02programmingTransaction.service.BankService;
-import com.ims.c04annotationAopTransaction.dao.BankDao;
+import com.ims.dao.BankDao;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;

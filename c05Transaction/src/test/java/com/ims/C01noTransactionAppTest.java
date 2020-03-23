@@ -1,6 +1,6 @@
 package com.ims;
 
-import com.ims.c04annotationAopTransaction.service.BankService;
+import com.ims.service.BankService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

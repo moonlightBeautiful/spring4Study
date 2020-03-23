@@ -16,7 +16,7 @@ public class C01_JdbcTemplateAppTest {
      * Rigorous Test :-)
      */
     @Test
-    public void shouldAnswerWithTrue() {
+    public void test() {
         ApplicationContext ac = new ClassPathXmlApplicationContext("c01jdbcTemplate.xml");
         StudentService studentService = (StudentService) ac.getBean("studentService");
         studentService.addStudent(new Student("李四", 144));

@@ -1,8 +1,8 @@
 Spring对缓存的支持
     缓存简介：
-        Spring Cache的核心就是对某个方法进行缓存，
-        其实质就是缓存方法的返回结果，并把方法参数和结果用键值对的方式存放到缓存中，当再次调用该方法使用相应的参数时，
-        就会直接从缓存里面取出指定的结果进行返回。所以在使用Cache的时候我们要保证我们缓存的方法对于相同的参数要有相同的返回结果。
+        Spring Cache的核心就是对某个方法进行缓存。
+        其实质就是缓存方法的返回结果，并把方法入参和结果用键值对的方式存放到缓存中，当再次调用该方法使用相应的参数时，就会直接从缓存里面取出指定的结果进行返回。
+        所以在使用Cache的时候我们要保证我们缓存的方法对于相同的参数要有相同的返回结果。
         Spring Cache使用方法与Spring对事务管理的配置相似。
     两种方法实现Cache的支持
         1.基于注解的配置
@@ -46,7 +46,7 @@ Spring对缓存的支持
                    <artifactId>ehcache</artifactId>
                    <version>2.10.6</version>
                </dependency>
-            2.在classPath下增加ehcache配置文件ehcache.xml
+            2.ehcache配置文件ehcache.xml
                 <?xml version="1.0" encoding="UTF-8"?>
                 <ehcache updateCheck="false">
                     <diskStore path="java.io.tmpdir"/>
@@ -67,25 +67,42 @@ Spring对缓存的支持
                        timeToLiveSeconds="60"
                        memoryStoreEvictionPolicy="LFU"/> 
                 </ehcache>
-            3.spring配置
-                1.开启缓存的注解功能
-                    <cache:anotation-driven cache-manager="myDefaultEhcacheManager"/>
-                3.根据ehcache.xml文件生成缓存工厂类
+            3.spring配置缓存
+                1.根据ehcache.xml文件生成缓存工厂类
                     <bean id="ehCacheFactory" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
                         <property name="configLocation" value="classpath:ehcache.xml"/>
                     </bean>
-                3.缓存管理器
+                2.缓存管理器
                     <bean id="myDefaultEhcacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
                         <property name="cacheManager" ref="ehCacheFactory"></property>
                     </bean>
-            2.在service层添加注解
+                3.开启缓存的注解功能
+                    <cache:anotation-driven cache-manager="myDefaultEhcacheManager"/>
+                    标签属性
+                        mode属性，默认使用proxy。
+                            当mode为proxy时(默认)：
+                                只有缓存方法在声明类对象外部被调用的时候才会发生作用。且方法必须为public。
+                                note：以下会报错
+                                        ApplicationContext ac = new ClassPathXmlApplicationContext("02annotationCache.xml");
+                                        BankServiceImpl实现类 bankService = (BankServiceImpl) ac.getBean("bankService");
+                                    proxy使用的是aop，aop应该是使用了JDK Proxy。不能用接口的实现类来转换Proxy的实现类，它们是同级，应该用共同的接口来转换。应该如下：
+                                        ApplicationContext ac = new ClassPathXmlApplicationContext("02annotationCache.xml");
+                                        BankService接口 bankService = (BankService) ac.getBean("bankService");
+                                    使用proxy，必须为被代理的目标实现一个接口。
+                            当mode为aspectj时，
+                                网上说可以缓存方法在声明类对象内部被调用的时候会发生作用，但是不管用。。方法可以为非public。
+                        proxy-target-class：决定是基于接口的还是基于类的代理被创建。默认true。
+                            其实就是在接口上起不起作用
+                                为true则是基于类的代理：缓存注解在类上管用，但是在接口上不管用。
+                                默认值为false，则是基于接口的代理：缓存注解用在接口和接口的实现类上都管用。
+            4.在service层添加注解
                 @Cacheable(value="myCache")　 //这个名称就是ehcache.xml文件中的name属性的值 
     基于xml使用Cache
         1.xml文件中添加命名空间
         2.配置CacheManager
             通过指定的ehcache配置文件来生成的一个Ehcache的CacheManager。若未指定则默认规则取classpath路径下的ehcache文件，若还是不存在则取Ehcache对应包的ehcache-failsafe.xml文件作为配置文件。
-            <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager" p:cache-manager-ref="cacheFactory"/>  
             <bean id="cacheFactory" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" p:config-location="ehcache-spring.xml"/>  
+            <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager" p:cache-manager-ref="cacheFactory"/>  
         3.缓存通知
             <cache:advice id="cacheAdvice" cache-manager="cacheManager">  
                 <cache:caching cache="users">  
@@ -100,28 +117,5 @@ Spring对缓存的支持
             </aop:config> 
             proxy-target-class：无意义 扫描接口还是实现类 都可以
             expose-proxy="false":是否拦截类中方法1内部中调用的方法2
-    属性配置学习
-        mode属性，可以选择值proxy和aspectj。默认使用proxy。
-            当mode为proxy时，
-                一个类中，缓存方法调用缓存方法缓存OK。缓存方法必须是public。
-                一个类中，非缓存方法调用缓存方法缓存OK。缓存方法必须是public。
-                note：以下会报错
-                        ApplicationContext ac = new ClassPathXmlApplicationContext("02annotationCache.xml");
-                        BankServiceImpl bankService = (BankServiceImpl) ac.getBean("bankService");
-                    proxy使用的是aop，aop应该是使用了JDK Proxy。不能用接口的实现类来转换Proxy的实现类，它们是同级，应该用共同的接口来转换。应该如下：
-                        ApplicationContext ac = new ClassPathXmlApplicationContext("02annotationCache.xml");
-                        BankService bankService = (BankService) ac.getBean("bankService");
-                    使用proxy，必须为被代理的目标实现一个接口。
-            当mode为aspectj时，
-                一个类中，缓存方法调用缓存方法缓存not OK。缓存方法可以是非public。
-                一个类中，非缓存方法调用缓存方法缓存OK。缓存方法可以是非public。
-            用在spring事务、缓存驱动启动标签上。
-        proxy-target-class：决定是基于接口的还是基于类的代理被创建。默认true。
-            其实就是在接口上起不起作用
-                为true则是基于类的代理：缓存注解用在类上管用，但是缓存注解用在类的接口上不管用。
-                为false则是基于接口的代理：缓存注解用在类上管用，而且缓存注解用在类的接口上也管用。
-            用在spring事务、aop、缓存xml标签上。例子如下：
-                <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
-                <aop:config proxy-target-class="true">
-                <cache:annotation-driven proxy-target-class="true"/>
+        
             
