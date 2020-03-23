@@ -1,4 +1,4 @@
-package com.ims.c03NamedParameterJdbcTemplate.dao;
+package com.ims.c02programmingTransaction.dao;
 
 public interface BankDao {
 

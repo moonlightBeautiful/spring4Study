@@ -1,9 +1,8 @@
-package com.ims.c03NamedParameterJdbcTemplate.dao.impl;
+package com.ims.c01noTransaction.dao.impl;
 
+import com.ims.c01noTransaction.dao.BankDao;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-
-import com.ims.c03NamedParameterJdbcTemplate.dao.BankDao;
 
 public class BankDaoImpl implements BankDao {
 

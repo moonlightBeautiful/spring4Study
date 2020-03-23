@@ -1,4 +1,4 @@
-package com.ims.c03NamedParameterJdbcTemplate.dao;
+package com.ims.c04annotationAopTransaction.dao;
 
 public interface BankDao {
 

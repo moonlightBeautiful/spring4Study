@@ -21,7 +21,7 @@
         <constructor-arg ref="dataSource"></constructor-arg>
     </bean>
 
-    <!-- 事务相关：事物管理器、事务模板 -->
+    <!-- 事务相关：事物管理器transactionManager、事务模板transactionTemplate -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"></property>
     </bean>
@@ -31,11 +31,11 @@
     </bean>
 
     <!-- 业务 -->
-    <bean id="bankDao" class="com.ims.c03NamedParameterJdbcTemplate.dao.impl.BankDaoImpl">
+    <bean id="bankDao" class="com.ims.c02programmingTransaction.dao.impl.BankDaoImpl">
         <property name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"></property>
     </bean>
 
-    <bean id="bankService" class="com.ims.service.impl.BankServiceImpl">
+    <bean id="bankService" class="com.ims.c02programmingTransaction.service.impl.BankServiceImpl">
         <property name="bankDao" ref="bankDao"></property>
         <!-- service层注入事务模板 -->
         <property name="transactionTemplate" ref="transactionTemplate"></property>

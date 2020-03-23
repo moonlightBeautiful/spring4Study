@@ -12,7 +12,7 @@
         http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd">
-    <!-- xml式事务管理 -->
+    <!-- xmlAop式事务管理 -->
 
     <!-- 数据源配置 -->
     <context:property-placeholder location="jdbc.properties"/>
@@ -28,13 +28,12 @@
         <constructor-arg ref="dataSource"></constructor-arg>
     </bean>
 
-
     <!-- 业务 -->
-    <bean id="bankDao" class="com.ims.c03NamedParameterJdbcTemplate.dao.impl.BankDaoImpl">
+    <bean id="bankDao" class="com.ims.c03xmlAopTransaction.dao.impl.BankDaoImpl">
         <property name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"></property>
     </bean>
 
-    <bean id="bankService" class="com.ims.service.impl.BankServiceImpl">
+    <bean id="bankService" class="com.ims.c03xmlAopTransaction.service.impl.BankServiceImpl">
         <property name="bankDao" ref="bankDao"></property>
     </bean>
 
@@ -66,10 +65,9 @@
     <!-- 配置事务切面 -->
     <aop:config>
         <!-- 切点 -->
-        <aop:pointcut id="serviceMethod" expression="execution(* com.ims.service..*(..))"/>
+        <aop:pointcut id="serviceMethod" expression="execution(* com.ims.c03xmlAopTransaction.service..*(..))"/>
         <!-- 事务通知 -->
         <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethod"/>
     </aop:config>
-
 
 </beans>
