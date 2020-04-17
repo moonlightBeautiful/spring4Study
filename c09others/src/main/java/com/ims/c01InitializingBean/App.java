@@ -1,3 +1,5 @@
+package com.ims.c01InitializingBean;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
